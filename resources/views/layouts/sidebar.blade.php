@@ -54,10 +54,17 @@
                     <div class="collapse menu-dropdown" id="sidebarMultilevel">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">@lang('translation.level-1.1')</a>
+                                <a href="/category/create" class="nav-link">اضافة تصنيف</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">@lang('translation.level-1.1')</a>
+                                <a href="/product/create" class="nav-link">اضافة منتج</a>
+                            </li>
+                            <li class="nav-item" data-toggle="products">
+                                <a href="/product/" class="nav-link">المنتجات</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/category" class="nav-link">التصنيفات</a>
                             </li>
                         </ul>
                     </div>
