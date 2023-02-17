@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('loyalties', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("img")->nullable();
-            $table->string("price");
-            $table->string("code")->nullable();
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->string("phone");
+            $table->integer("points")->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('loyalties');
     }
 };

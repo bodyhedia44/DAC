@@ -26,6 +26,7 @@ class CategoryController extends Controller
     {
         Validator::make($request->all(), [
             'name' => 'required|unique:categories|max:50|String',
+
         ],
         [
             'required' => 'يجب ان تقوم بادخال الاسم',
@@ -33,8 +34,10 @@ class CategoryController extends Controller
         ]
         )->validate();
 
+
         Category::create([
-           "name"=>$request->name
+           "name"=>$request->name,
+
         ]);
 
         session()->flash("add","تم اضافة القسم بنجاح");
@@ -63,26 +66,29 @@ class CategoryController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $category)
+    public function update(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'name' => 'required|unique:categories|max:50|String',
+        ],
+            [
+                'required' => 'يجب ان تقوم بادخال الاسم',
+                'unique'=>"هذا الاسم موجود مسبقا"
+            ]
+        )->validate();
+       $c= Category::find($request->id);
+       $c->name=$request->name;
+       $c->save();
+        session()->flash("add","تم تعديل القسم بنجاح");
+        return redirect("/category");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Category $category)
+
+    public function destroy(Request $request)
     {
-        //
+        Category::find($request->id)->delete();
+        session()->flash("del","تم حذف القسم بنجاح");
+        return redirect("/category");
+
     }
 }

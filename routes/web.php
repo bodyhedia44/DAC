@@ -21,6 +21,7 @@ Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'
 Route::middleware(['auth'])->group(function () {
     Route::resource("category", \App\Http\Controllers\CategoryController::class,);
     Route::resource("product", \App\Http\Controllers\ProductController::class,);
+    Route::resource("loyalty", \App\Http\Controllers\LoyaltyController::class,);
 });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
