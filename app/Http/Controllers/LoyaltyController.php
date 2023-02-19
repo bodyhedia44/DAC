@@ -9,7 +9,13 @@ use Illuminate\Support\Facades\Validator;
 
 class LoyaltyController extends Controller
 {
-
+    function __construct()
+    {
+        $this->middleware('permission:حذف نقاط الولاء|تعديل نقاط الولاء|انشاء نقاط ولاء|عرض نقاط الولاء', ['only' => ['index','store']]);
+        $this->middleware('permission:انشاء نقاط ولاء', ['only' => ['create','store']]);
+        $this->middleware('permission:تعديل نقاط الولاء', ['only' => ['edit','update']]);
+        $this->middleware('permission:حذف نقاط الولاء', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $cat=Loyalty::all();

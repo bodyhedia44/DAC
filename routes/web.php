@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -18,7 +20,10 @@ Auth::routes();
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
 
+
 Route::middleware(['auth'])->group(function () {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
     Route::resource("category", \App\Http\Controllers\CategoryController::class,);
     Route::resource("product", \App\Http\Controllers\ProductController::class,);
     Route::resource("loyalty", \App\Http\Controllers\LoyaltyController::class,);

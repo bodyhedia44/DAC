@@ -34,7 +34,9 @@
                 <li class="menu-title"><span>قائمة الادوات</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarMultilevel" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                    <a class="nav-link menu-link" href="{{ url('/' . $page='') }}"
+                       role="button"
+                       aria-expanded="false" aria-controls="sidebarMultilevel">
                         <i class="bx bx-home-circle"></i> <span>@lang('translation.main')</span>
                     </a>
                 </li>
@@ -48,10 +50,11 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                    <a class="nav-link menu-link" href="#product" data-bs-toggle="collapse" role="button"
+                       aria-expanded="false" aria-controls="product">
                         <i class="bx bx-category"></i> <span>@lang('translation.add-product')</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarMultilevel">
+                    <div class="collapse menu-dropdown" id="product">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="/category/create" class="nav-link">اضافة تصنيف</a>
@@ -59,8 +62,8 @@
                             <li class="nav-item">
                                 <a href="/product/create" class="nav-link">اضافة منتج</a>
                             </li>
-                            <li class="nav-item" data-toggle="products">
-                                <a href="/product/" class="nav-link">المنتجات</a>
+                            <li class="nav-item">
+                                <a href="/product" class="nav-link">المنتجات</a>
                             </li>
 
                             <li class="nav-item">
@@ -71,10 +74,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                    <a class="nav-link menu-link" href="#permission" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="permission">
                         <i class="bx bx-lock"></i> <span>@lang('translation.permissions')</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarMultilevel">
+                    <div class="collapse menu-dropdown" id="permission">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="#" class="nav-link">@lang('translation.level-1.1')</a>
@@ -88,10 +91,10 @@
 
                 <li class="nav-item">
 
-                    <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                    <a class="nav-link menu-link" href="#role" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="role">
                         <i class="mdi mdi-account-group"></i> <span>@lang('translation.loyal')</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarMultilevel">
+                    <div class="collapse menu-dropdown" id="role">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="#" class="nav-link">@lang('translation.level-1.1')</a>
@@ -104,10 +107,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                    <a class="nav-link menu-link" href="#reports" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="reports">
                         <i class="mdi mdi-chart-line"></i> <span>@lang('translation.stats')</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarMultilevel">
+                    <div class="collapse menu-dropdown" id="reports">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="#" class="nav-link">@lang('translation.level-1.1')</a>

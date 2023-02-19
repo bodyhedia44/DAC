@@ -8,7 +8,13 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-
+    function __construct()
+    {
+        $this->middleware('permission:انشاء تصنيفات|حذف تصنيف|تعديل تصنيفات|عرض التصنيفات', ['only' => ['index','store']]);
+        $this->middleware('permission:انشاء تصنيفات', ['only' => ['create','store']]);
+        $this->middleware('permission:تعديل تصنيفات', ['only' => ['edit','update']]);
+        $this->middleware('permission:حذف تصنيف', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $cat=Category::all();

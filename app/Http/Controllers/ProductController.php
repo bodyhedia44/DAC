@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('permission:حذف منتج|تعديل منتجات|انشاء منتجات|عرض المنتجات', ['only' => ['index','store']]);
+        $this->middleware('permission:انشاء منتجات', ['only' => ['create','store']]);
+        $this->middleware('permission:تعديل منتجات', ['only' => ['edit','update']]);
+        $this->middleware('permission:حذف منتج', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $cat=Product::all();
