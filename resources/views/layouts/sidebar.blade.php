@@ -50,6 +50,21 @@
 
 
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="/settings"  role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                        <i class="mdi mdi-cog"></i> <span>الاعدادات</span>
+
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                        <i class="mdi mdi-cash-refund"></i> <span>المرتجعات</span>
+
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="#product" data-bs-toggle="collapse" role="button"
                        aria-expanded="false" aria-controls="product">
                         <i class="bx bx-category"></i> <span>@lang('translation.add-product')</span>
@@ -80,10 +95,10 @@
                     <div class="collapse menu-dropdown" id="permission">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">@lang('translation.level-1.1')</a>
+                                <a href="/users" class="nav-link">المستخدمين</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">@lang('translation.level-1.1')</a>
+                                <a href="/roles" class="nav-link">الصلاحيات</a>
                             </li>
                         </ul>
                     </div>

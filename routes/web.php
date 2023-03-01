@@ -24,6 +24,8 @@ Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'
 Route::middleware(['auth'])->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
+    Route::resource('settings', \App\Http\Controllers\SettingController::class);
+    Route::get('pos', [\App\Http\Controllers\PosController::class,'index']);
     Route::resource("category", \App\Http\Controllers\CategoryController::class,);
     Route::resource("product", \App\Http\Controllers\ProductController::class,);
     Route::resource("loyalty", \App\Http\Controllers\LoyaltyController::class,);

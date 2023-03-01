@@ -51,7 +51,7 @@
                                     <td><img src="https://static.thenounproject.com/png/1375593-200.png" width="50"></td>
 
                                 @else
-                                    <td><img src="{{asset('storage/'.$x->img)}}"></td>
+                                    <td><img src="{{asset('storage/'.$x->img)}}" width="50"></td>
                                 @endif
 
                                 @if($x->code==null)
