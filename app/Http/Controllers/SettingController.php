@@ -46,7 +46,7 @@ class SettingController extends Controller
 
            $data->name=$request->name;
            $data->location=  $request->location;
-       $data->tax=  $request->tax;
+           $data->tax=  $request->tax;
            $data->img= $path;
 
            $data->save();

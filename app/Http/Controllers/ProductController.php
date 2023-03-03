@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,12 +51,17 @@ class ProductController extends Controller
             $path="";
         }
 
-        Product::create([
+        $p=Product::create([
             "name"=>$request->name,
             'price'=>$request->price,
             'code'=>$request->code,
             'img'=>$path,
             'category_id'=>$request->category
+        ]);
+
+        Sale::create([
+            "id"=>$p->id,
+            "name"=>$request->name,
         ]);
 
         session()->flash("add","تم اضافة المنتج بنجاح");

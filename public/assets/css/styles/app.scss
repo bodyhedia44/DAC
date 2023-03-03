@@ -391,8 +391,6 @@ a.btn {
 }
 
 .items {
-    overflow-y: scroll;
-    height: 370px;
     // border: 1px solid;
     padding: 12px 4px;
 
@@ -405,6 +403,7 @@ a.btn {
     .item,
     .cancel {
         width: calc(20% - 10px);
+        height: 165px;
         padding: 10px 2px;
         margin: 2px 0px;
         background: #5d677c;
@@ -482,7 +481,11 @@ table.casher-table {
     }
 
 }
-
+.items,
+.table-container {
+    overflow-y: scroll;
+    height: 370px;
+}
 .price-container {
     display: flex;
     flex-direction: column;
@@ -519,7 +522,7 @@ table.casher-table {
         gap: 12px 8px;
 
         button {
-            background: #45518d;
+        max-height: 60px;        background: #45518d;
             color: #fff;
             gap: 8px;
 

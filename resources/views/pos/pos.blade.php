@@ -1,13 +1,16 @@
 @extends('layouts.master')
 @section('title') نقاط البيع  @endsection
 @section('content')
-        <link rel="icon" href="{{ URL::asset('assets/images/logo-dark.png') }}" />
-        <link rel="stylesheet" href="{{ URL::asset('assets/css/styles/app.css') }}" />
+    <link rel="icon" href="{{ URL::asset('assets/images/logo-dark.png') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/styles/app.css') }}" />
+
 
         <body id="casher" onload="hide()">
+        <form action="{{route('pos.store')}}" method="post" id="form">
+            {{csrf_field()}}
             <div class="page-container">
                 <div class="not-footer">
-                    <header class="page-header">
+                    <header class="page-header" id="bla">
                         <nav>
                             <div class="navbar-container"></div>
                         </nav>
@@ -46,7 +49,7 @@
 
                                         @foreach($prods as $y)
                                             <a id="{{$y->category->id}}" class="item prod {{$x->id}}"
-                                               onclick="addItem('{{$y->name}}',{{$y->price}})">
+                                               onclick="addItem('{{$y->name}}',{{$y->price}},'{{$y->id}}')">
                                                 <img src="{{asset('storage/'.$y->img)}}" alt="" class="item-img">
                                                 <h2 class="item-title">
                                                     {{$y->name}}
@@ -64,11 +67,20 @@
                             <div class="col-4 price-container">
                                 <div class="col-12">
                                     <span>
+                                        الكمية
+                                    </span>
+
+                                    <div class="text">
+                                        <input type="number" id="quan" value="1" min="1">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <span>
                                         المجموع
                                     </span>
 
                                     <div class="text">
-                                        <input type="number" id="total" readonly>
+                                        <input type="number" name="total" id="total" required readonly>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -86,85 +98,82 @@
                                     </span>
 
                                     <div class="text">
-                                        <input type="number" readonly>
+                                        <input type="number" name="net" readonly>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-8 toolbar-container">
-                                <div class="col-4 price-container">
-                                    <div class="col-12">
+                            <div class="col-4 price-container">
+                                <div class="col-12">
                                         <span>
                                                 طريقة الدفع
                                             </span>
-                                        <div class="text">
-                                            <select name="" id="">
-                                                <option value="">
-                                                    cash
-                                                </option>
-                                                <option value="">
-                                                    visa
-                                                </option>
-                                            </select>
-                                        </div>
+                                    <div class="text">
+                                        <select name="option">
+                                            <option value="cash">
+                                                cash
+                                            </option>
+                                            <option value="visa">
+                                                visa
+                                            </option>
+                                        </select>
                                     </div>
+                                </div>
+                                <div class="col-12">
+                                        <span>
+                                                خصم
+                                            </span>
 
-                                    <div class="col-12">
+                                    <div class="text">
+                                        <input type="number" id="sale">
+                                    </div>
+                                </div>
+                                <div class="col-12">
                                         <span>
                                                 المدفوع
                                             </span>
 
-                                        <div class="text">
-                                            <input type="number" id="paid" onchange="change()">
-                                        </div>
+                                    <div class="text">
+                                        <input type="number" id="paid" onchange="change()" required>
                                     </div>
-                                    <div class="col-12">
+                                </div>
+                                <div class="col-12">
                                         <span>
                                                 الباقي
                                             </span>
 
-                                        <div class="text">
-                                            <input type="number" id="change" readonly>
-                                        </div>
+                                    <div class="text">
+                                        <input type="number" id="change" readonly>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="col-8 buttons-container">
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-floppy-disk"></i>--}}
-{{--                                        save--}}
-{{--                                    </button>--}}
+                            <div class="col-4">
+                                <div class="row-cols-4">
                                     <button>
                                         <i class="fa-solid fa-money-bill-1-wave"></i>
-                                        pay
+                                        دفع
                                     </button>
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-trash"></i>--}}
-{{--                                        remove--}}
-{{--                                    </button>--}}
                                     <button>
                                         <i class="fa-solid fa-xmark"></i>
-                                        cancel
+                                        الغاء
                                     </button>
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-ban"></i>--}}
-{{--                                        clear--}}
-{{--                                    </button>--}}
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-door-open"></i>--}}
-{{--                                        exit--}}
-{{--                                    </button>--}}
                                     <button>
                                         <i class="fa-solid fa-print"></i>
-                                        print
+                                        طباعة
                                     </button>
                                 </div>
+
                             </div>
+
+
                         </div>
 
                     </main>
                 </div>
             </div>
+    </form>
+
         </body>
 
 @endsection
@@ -172,6 +181,38 @@
     <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
     <script>
         let total =0;
+
+        function addItem(name,price,id){
+            const table = document.getElementById("table");
+            const quan = document.getElementById("quan");
+
+            var row = table.insertRow(1);
+
+            const cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(2);
+
+            cell1.innerHTML = "";
+            cell2.innerHTML = name;
+            cell3.innerHTML = price*quan.value;
+            cell4.innerHTML = quan.value;
+
+            total+=price*quan.value;
+            console.log(total)
+            const t =document.getElementById("total")
+            t.value = total;
+
+            const form =document.getElementById("bla");
+            form.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
+            form.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${quan.value}">`
+            quan.value=1;
+
+
+
+
+        }
+
         function hide(){
             document.getElementById("toggle").style.display='none';
             const products =document.getElementsByClassName("prod")
@@ -202,29 +243,11 @@
             }
         }
 
-        function addItem(name,price){
-            const table = document.getElementById("table");
 
-            var row = table.insertRow(1);
-
-            const cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(2);
-
-            cell1.innerHTML = "";
-            cell2.innerHTML = name;
-            cell3.innerHTML = price;
-            cell4.innerHTML = 1;
-            total+=price;
-            document.getElementById("total").value = total;
-
-        }
 
         function change(){
-            if (total===0){
-
-            }else{
+            if (total===0){}
+            else{
                 let paid=document.getElementById('paid').value;
                 console.log(paid)
                 let change=paid-total;
@@ -232,9 +255,84 @@
                 i.value=change
             }
         }
+
     </script>
 @endsection
 
+
+
+
+
+
+{{--                            <div class="col-8 toolbar-container">--}}
+{{--                                <div class="col-4 price-container">--}}
+{{--                                    <div class="col-12">--}}
+{{--                                        <span>--}}
+{{--                                                طريقة الدفع--}}
+{{--                                            </span>--}}
+{{--                                        <div class="text">--}}
+{{--                                            <select name="option" id="">--}}
+{{--                                                <option value="cash">--}}
+{{--                                                    cash--}}
+{{--                                                </option>--}}
+{{--                                                <option value="visa">--}}
+{{--                                                    visa--}}
+{{--                                                </option>--}}
+{{--                                            </select>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+
+{{--                                    <div class="col-12">--}}
+{{--                                        <span>--}}
+{{--                                                المدفوع--}}
+{{--                                            </span>--}}
+
+{{--                                        <div class="text">--}}
+{{--                                            <input type="number" id="paid" onchange="change()" required>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-12">--}}
+{{--                                        <span>--}}
+{{--                                                الباقي--}}
+{{--                                            </span>--}}
+
+{{--                                        <div class="text">--}}
+{{--                                            <input type="number" id="change" readonly>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+
+{{--                                <div class="col-8 buttons-container">--}}
+{{--                                    <button>--}}
+{{--                                        <i class="fa-solid fa-floppy-disk"></i>--}}
+{{--                                        save--}}
+{{--                                    </button>--}}
+{{--                                    <button>--}}
+{{--                                        <i class="fa-solid fa-money-bill-1-wave"></i>--}}
+{{--                                        pay--}}
+{{--                                    </button>--}}
+{{--                                    <button>--}}
+{{--                                        <i class="fa-solid fa-trash"></i>--}}
+{{--                                        remove--}}
+{{--                                    </button>--}}
+{{--                                    <button>--}}
+{{--                                        <i class="fa-solid fa-xmark"></i>--}}
+{{--                                        cancel--}}
+{{--                                    </button>--}}
+{{--                                    <button>--}}
+{{--                                        <i class="fa-solid fa-ban"></i>--}}
+{{--                                        clear--}}
+{{--                                    </button>--}}
+{{--                                    <button>--}}
+{{--                                        <i class="fa-solid fa-door-open"></i>--}}
+{{--                                        exit--}}
+{{--                                    </button>--}}
+{{--                                    <button>--}}
+{{--                                        <i class="fa-solid fa-print"></i>--}}
+{{--                                        print--}}
+{{--                                    </button>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
 
 

@@ -357,8 +357,6 @@ a.btn:focus {
 }
 
 .items {
-  overflow-y: scroll;
-  height: 370px;
   padding: 12px 4px;
   display: flex;
   flex-direction: row;
@@ -368,6 +366,7 @@ a.btn:focus {
 .items .item,
 .items .cancel {
   width: calc(20% - 10px);
+  height: 165px;
   padding: 10px 2px;
   margin: 2px 0px;
   background: #5d677c;
@@ -436,6 +435,12 @@ table.casher-table thead th {
   color: #FFFFFF;
 }
 
+.items,
+.table-container {
+  overflow-y: scroll;
+  height: 370px;
+}
+
 .price-container {
   display: flex;
   flex-direction: column;
@@ -468,6 +473,7 @@ table.casher-table thead th {
   gap: 12px 8px;
 }
 .toolbar-container .buttons-container button {
+  max-height: 60px;
   background: #45518d;
   color: #fff;
   gap: 8px;
