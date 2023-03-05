@@ -37,6 +37,7 @@ class HomeController extends Controller
     public function root()
     {
         App::setLocale("ae");
+
         return view('index');
     }
 
