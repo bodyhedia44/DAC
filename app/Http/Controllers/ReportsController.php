@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use App\Models\Sale;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ReportsController extends Controller
 {
@@ -14,6 +15,23 @@ class ReportsController extends Controller
     }
 
     function updateProducts(Request $request){
+//        Validator::make($request->all(), [
+//            'name' => 'required|max:255|String',
+//            'sales' => 'required|Numeric',
+//        ],
+//            [
+//                'required' => 'يجب ان تقوم بادخال القول المطلوبة',
+//            ]
+//        )->validate();
+
+        $data=Sale::findOrFail($request->id);
+
+        $data->sales=$request->sales;
+
+        $data->save();
+
+        session()->flash("add","تم تعديل المنتج بنجاح");
+        return redirect("/productsReport");
 
     }
 

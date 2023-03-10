@@ -31,6 +31,11 @@ class PermissionTableSeeder extends Seeder
             'انشاء نقاط ولاء',
             'تعديل نقاط الولاء',
             'حذف نقاط الولاء',
+            'الاعدادات',
+            'المرتجعات',
+            'الاحصائيات',
+            'المبيعات',
+            'تقرير المنتجات',
         ];
 
         foreach ($permissions as $permission) {

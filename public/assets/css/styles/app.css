@@ -355,6 +355,18 @@ a.btn:focus {
   flex-wrap: wrap;
   gap: 40px 0px;
 }
+.casher-container button {
+  max-height: 60px;
+  background: #45518d;
+  color: #fff;
+  border: 1px solid #45518d;
+  padding: 0px 6px;
+  gap: 8px;
+}
+.casher-container button:hover, .casher-container button:focus {
+  background: #fff;
+  color: #45518d;
+}
 
 .items {
   padding: 12px 4px;
@@ -441,25 +453,45 @@ table.casher-table thead th {
   height: 370px;
 }
 
-.price-container {
+.price-container form,
+.products-container form {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
-.price-container > .col-12 {
+.price-container form > .col-12,
+.products-container form > .col-12 {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
-.price-container > .col-12 span {
+.price-container form > .col-12 span,
+.products-container form > .col-12 span {
   font-size: 18px;
   font-weight: 600;
   text-transform: capitalize;
 }
-.price-container > .col-12 input,
-.price-container > .col-12 select {
+.price-container form > .col-12 input,
+.price-container form > .col-12 select,
+.products-container form > .col-12 input,
+.products-container form > .col-12 select {
   padding: 4px 8px;
   font-size: 18px;
+}
+
+.products-container form .form-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: unset;
+  align-items: flex-end;
+  gap: 10px;
+}
+.products-container form .form-item button,
+.products-container form .form-item input {
+  height: 45px;
+}
+.products-container form button {
+  width: 250px;
 }
 
 .toolbar-container {
@@ -472,12 +504,7 @@ table.casher-table thead th {
   flex-wrap: wrap;
   gap: 12px 8px;
 }
-.toolbar-container .buttons-container button {
-  max-height: 60px;
-  background: #45518d;
-  color: #fff;
-  gap: 8px;
-}
+
 @media (max-width: 1440px) {
   section.banner .layer .image img {
     width: 300px;

@@ -32,6 +32,36 @@
         </div>
         <!-- end col -->
     </div>
+
+    <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">تعديل تصنيف</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                </div>
+                <form action="/productsReport" method="post">
+                    {{csrf_field()}}
+                    <div class="modal-body">
+
+                        <input type="hidden" name="id" id="id">
+
+                        <h5 class="fs-15">
+                            تعديل العدد
+                        </h5>
+                        <!-- Readonly Input -->
+
+                        <input type="text" class="form-control mb-3" name="name" id="name" readonly disabled>
+                        <input type="number" class="form-control" name="sales" id="sales">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-primary ">تعديل</button>
+                    </div>
+            </div>
+            <!-- /.modal-content -->
+        </div><!-- /.modal-dialog --> </form>
+    </div>
 @endsection
 @section('script')
     <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
@@ -61,9 +91,8 @@
                     name: 'عمليات',
                     width: '120px',
                     formatter: (function (cell) {
-                        return gridjs.html("" +
-                           ' <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"data-bs-target="#myModal2"><i class="ri-edit-line"></i></button>' +
-                            "");
+                        return gridjs.html(
+                            "" + cell+"");
                     })
                 },
             ],
@@ -75,10 +104,25 @@
                     <?php $i=0?>
                 @foreach($data as $d)
                         <?php $i++?>
-                ["{{$i}}", "{{$d->name}}", "{{$d->sales}}",],
+                ["{{$i}}", "{{$d->name}}", "{{$d->sales}}",
+
+                        ' <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-id="{{$d->id}}" data-name="{{$d->name}}"  data-quan="{{$d->sales}}" data-bs-target="#myModal"><i class="ri-edit-line"></i></button>'
+                    ],
                     @endforeach
             ]
         }).render(document.getElementById("table-gridjs1"));
+
+        $('#myModal').on('show.bs.modal', function(event) {
+            console.log(1);
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            var name = button.data('name')
+            var sales = button.data('quan')
+            var modal = $(this)
+            modal.find('#id').val(id);
+            modal.find('#name').val(name);
+            modal.find('#sales').val(sales);
+        });
 
     </script>
 @endsection

@@ -36,13 +36,13 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ url('/' . $page='') }}"
                        role="button"
-                       aria-expanded="false" aria-controls="sidebarMultilevel">
+                       aria-expanded="false" aria-controls="">
                         <i class="bx bx-home-circle"></i> <span>@lang('translation.main')</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarMultilevel" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                    <a class="nav-link menu-link" href="/pos" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
                         <i class="mdi mdi-desktop-classic"></i> <span>@lang('translation.pos')</span>
 
                     </a>
@@ -57,7 +57,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                    <a class="nav-link menu-link" href="/returns" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
                         <i class="mdi mdi-cash-refund"></i> <span>المرتجعات</span>
 
                     </a>
@@ -112,10 +112,10 @@
                     <div class="collapse menu-dropdown" id="role">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">@lang('translation.level-1.1')</a>
+                                <a href="/roles" class="nav-link">الصلاحيات</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">@lang('translation.level-1.1')</a>
+                                <a href="/users" class="nav-link">المستخدمين</a>
                             </li>
                         </ul>
                     </div>
@@ -128,10 +128,10 @@
                     <div class="collapse menu-dropdown" id="reports">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">@lang('translation.level-1.1')</a>
+                                <a href="/SalesReport" class="nav-link">المبيعات</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">@lang('translation.level-1.1')</a>
+                                <a href="/productsReport" class="nav-link">مبيعات المنتجات</a>
                             </li>
                         </ul>
                     </div>

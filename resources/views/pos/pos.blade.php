@@ -18,6 +18,12 @@
 
                     <main class="page-body">
                         <div class="casher-container row">
+                            <div class="col-12">
+                                <button>
+                                    search by code
+                                </button>
+                            </div>
+                        <div class="casher-container row">
 
                             <div class="col-4 table-container">
                                 <table class="casher-table" id="table">
@@ -63,7 +69,19 @@
                                     </a>
                                 </div>
                             </div>
+{{--                            <div class="col-8 products-container">--}}
+{{--                                <form action="">--}}
+{{--                                    <div class="form-item col-12">--}}
+{{--                                        <div class="text">--}}
+{{--                                            <input type="text">--}}
+{{--                                        </div>--}}
 
+{{--                                        <button>--}}
+{{--                                            bla bla bla--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
                             <div class="col-4 price-container">
                                 <div class="col-12">
                                     <span>
@@ -148,8 +166,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-4">
-                                <div class="row-cols-4">
+                            <div class="col-4 toolbar-container">
+                                <div class="row-cols-4 buttons-container">
                                     <button>
                                         <i class="fa-solid fa-money-bill-1-wave"></i>
                                         دفع
