@@ -6,8 +6,9 @@
 
 
         <body id="casher" onload="hide()">
-        <form action="{{route('pos.store')}}" method="post" id="form">
+        <form action="{{route('invoice')}}" method="post" id="form">
             {{csrf_field()}}
+            <input type="hidden" name="invoice" id="invoice">
             <div class="page-container">
                 <div class="not-footer">
                     <header class="page-header" id="bla">
@@ -203,6 +204,7 @@
         function addItem(name,price,id){
             const table = document.getElementById("table");
             const quan = document.getElementById("quan");
+            const invoice = document.getElementById("invoice");
 
             var row = table.insertRow(1);
 
@@ -225,10 +227,7 @@
             form.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
             form.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${quan.value}">`
             quan.value=1;
-
-
-
-
+            invoice.value=table.innerHTML;
         }
 
         function hide(){

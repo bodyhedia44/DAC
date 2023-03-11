@@ -11,7 +11,7 @@ class LoyaltyController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:حذف نقاط الولاء|تعديل نقاط الولاء|انشاء نقاط ولاء|عرض نقاط الولاء', ['only' => ['index','store']]);
+        $this->middleware('permission:عرض نقاط الولاء', ['only' => ['index']]);
         $this->middleware('permission:انشاء نقاط ولاء', ['only' => ['create','store']]);
         $this->middleware('permission:تعديل نقاط الولاء', ['only' => ['edit','update']]);
         $this->middleware('permission:حذف نقاط الولاء', ['only' => ['destroy']]);

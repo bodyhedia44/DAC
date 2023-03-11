@@ -41,8 +41,12 @@
                             <td>{{$x->phone}}</td>
                             <td>{{$x->points}}</td>
                             <td>
-                                <button type="button" class="btn btn-primary waves-effect waves-light"><i class="ri-edit-line"></i></button>
-                                <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-delete-bin-5-line"></i></button>
+                                @can('تعديل نقاط الولاء')
+                                    <button type="button" class="btn btn-primary waves-effect waves-light"><i class="ri-edit-line"></i></button>
+                                @endcan
+                                    @can('حذف نقاط الولاء')
+                                        <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-delete-bin-5-line"></i></button>
+                                    @endcan
                             </td>
                         </tr>
                         @endforeach

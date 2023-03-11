@@ -41,9 +41,12 @@
                             <th scope="row">{{$i}}</th>
                             <td>{{$x->name}}</td>
                             <td>
-                                <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-id="{{$x->id}}" data-name="{{$x->name}}" data-bs-target="#myModal2"><i class="ri-edit-line"></i></button>
-                                <button type="button" class="btn btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-id="{{$x->id}}" data-name="{{$x->name}}" data-bs-target="#myModal"><i class="ri-delete-bin-5-line"></i></button>
-
+                                @can('تعديل تصنيفات')
+                                    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-id="{{$x->id}}" data-name="{{$x->name}}" data-bs-target="#myModal2"><i class="ri-edit-line"></i></button>
+                                @endcan
+                                    @can( 'حذف تصنيف')
+                                        <button type="button" class="btn btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-id="{{$x->id}}" data-name="{{$x->name}}" data-bs-target="#myModal"><i class="ri-delete-bin-5-line"></i></button>
+                                    @endcan
                             </td>
                         </tr>
                         @endforeach

@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ReportsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:المبيعات', ['only' => ['productsReport','updateProducts']]);
+        $this->middleware('permission:تقرير المنتجات', ['only' => ['salesReport']]);
+    }
+
     function productsReport(){
         $data=Sale::all();
         return view("reports.products_report",compact('data'));

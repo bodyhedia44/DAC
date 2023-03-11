@@ -47,8 +47,8 @@
                                 <td>{{$x->category->name}}</td>
                                 <td>{{$x->price}}</td>
                                 @if($x->img=="")
-{{--                                    <td><img src="{{URL::asset('assets/images/products/pp.png')}}"></td>--}}
-                                    <td><img src="https://static.thenounproject.com/png/1375593-200.png" width="50"></td>
+                                    <td><img src="{{URL::asset('assets/images/products/pp.png')}}"></td>
+{{--                                    <td><img src="https://static.thenounproject.com/png/1375593-200.png" width="50"></td>--}}
 
                                 @else
                                     <td><img src="{{asset('storage/'.$x->img)}}" width="50"></td>
@@ -61,9 +61,12 @@
                                 @endif
 
                                 <td>
-                                    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-id="{{$x->id}}" data-name="{{$x->name}}" data-code="{{$x->code}}" data-price="{{$x->price}}" data-bs-target="#myModal2"><i class="ri-edit-line"></i></button>
-                                    <button type="button" class="btn btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-id="{{$x->id}}" data-name="{{$x->name}}" data-bs-target="#myModal"><i class="ri-delete-bin-5-line"></i></button>
-
+                                    @can('تعديل منتجات')
+                                        <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-id="{{$x->id}}" data-name="{{$x->name}}" data-code="{{$x->code}}" data-price="{{$x->price}}" data-bs-target="#myModal2"><i class="ri-edit-line"></i></button>
+                                    @endcan
+                                        @can('حذف منتج')
+                                            <button type="button" class="btn btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-id="{{$x->id}}" data-name="{{$x->name}}" data-bs-target="#myModal"><i class="ri-delete-bin-5-line"></i></button>
+                                        @endcan
                                 </td>
                             </tr>
                         @endforeach

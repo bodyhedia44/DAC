@@ -33,109 +33,184 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span>قائمة الادوات</span></li>
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ url('/' . $page='') }}"
-                       role="button"
-                       aria-expanded="false" aria-controls="">
-                        <i class="bx bx-home-circle"></i> <span>@lang('translation.main')</span>
-                    </a>
-                </li>
+                @can('الصفحة الرئيسية')
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ url('/' . $page='') }}"
+                           role="button"
+                           aria-expanded="false" aria-controls="">
+                            <i class="bx bx-home-circle"></i> <span>@lang('translation.main')</span>
+                        </a>
+                    </li>
+                @endcan
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="/pos" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
-                        <i class="mdi mdi-desktop-classic"></i> <span>@lang('translation.pos')</span>
+                @can('صفحة نقاط البيع')
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="/pos" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                            <i class="mdi mdi-desktop-classic"></i> <span>@lang('translation.pos')</span>
 
-                    </a>
-                </li>
-
-
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="/settings"  role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
-                        <i class="mdi mdi-cog"></i> <span>الاعدادات</span>
-
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="/returns" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
-                        <i class="mdi mdi-cash-refund"></i> <span>المرتجعات</span>
-
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                @endcan
 
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#product" data-bs-toggle="collapse" role="button"
-                       aria-expanded="false" aria-controls="product">
-                        <i class="bx bx-category"></i> <span>@lang('translation.add-product')</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="product">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="/category/create" class="nav-link">اضافة تصنيف</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/product/create" class="nav-link">اضافة منتج</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/product" class="nav-link">المنتجات</a>
-                            </li>
+                @can('الاعدادات')
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="/settings"  role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                            <i class="mdi mdi-cog"></i> <span>الاعدادات</span>
 
-                            <li class="nav-item">
-                                <a href="/category" class="nav-link">التصنيفات</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                        </a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#permission" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="permission">
-                        <i class="bx bx-lock"></i> <span>@lang('translation.permissions')</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="permission">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="/users" class="nav-link">المستخدمين</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/roles" class="nav-link">الصلاحيات</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @endcan
 
-                <li class="nav-item">
 
-                    <a class="nav-link menu-link" href="#role" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="role">
-                        <i class="mdi mdi-account-group"></i> <span>@lang('translation.loyal')</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="role">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="/roles" class="nav-link">الصلاحيات</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/users" class="nav-link">المستخدمين</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @can('المرتجعات')
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#reports" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="reports">
-                        <i class="mdi mdi-chart-line"></i> <span>@lang('translation.stats')</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="reports">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="/SalesReport" class="nav-link">المبيعات</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/productsReport" class="nav-link">مبيعات المنتجات</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="/returns" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                            <i class="mdi mdi-cash-refund"></i> <span>المرتجعات</span>
+
+                        </a>
+                    </li>
+                @endcan
+
+                @can("عرض التصنيفات")
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#cat" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="cat">
+                            <i class="bx bx-category"></i> <span>التصنيفات</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="cat">
+                            <ul class="nav nav-sm flex-column">
+                                @can('انشاء تصنيفات')
+                                    <li class="nav-item">
+                                        <a href="/category/create" class="nav-link">اضافة تصنيف</a>
+                                    </li>
+                                @endcan
+                                    @can('عرض التصنيفات')
+                                        <li class="nav-item">
+                                            <a href="/category" class="nav-link">التصنيفات</a>
+                                        </li>
+                                    @endcan
+
+                            </ul>
+                        </div>
+                    </li>
+
+                @endcan
+
+                @can('عرض المنتجات')
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#product" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="product">
+                            <i class="bx bx-store"></i> <span>المنتجات</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="product">
+                            <ul class="nav nav-sm flex-column">
+                                @can('انشاء منتجات')
+                                    <li class="nav-item">
+                                        <a href="/product/create" class="nav-link">اضافة منتج</a>
+                                    </li>
+                                @endcan
+                                    @can('عرض المنتجات')
+                                        <li class="nav-item">
+                                            <a href="/product" class="nav-link">المنتجات</a>
+                                        </li>
+                                    @endcan
+
+
+                            </ul>
+                        </div>
+                    </li>
+
+                @endcan
+
+
+                @can("قائمة الصلاحيات")
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#permission" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="permission">
+                            <i class="bx bx-lock"></i> <span>@lang('translation.permissions')</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="permission">
+                            <ul class="nav nav-sm flex-column">
+                                @can('قائمة المستخدمين')
+                                    <li class="nav-item">
+                                        <a href="/users" class="nav-link">المستخدمين</a>
+                                    </li>
+                                @endcan
+                                    @can( 'قائمة الصلاحيات')
+                                        <li class="nav-item">
+                                            <a href="/roles" class="nav-link">الصلاحيات</a>
+                                        </li>
+                                    @endcan
+
+                            </ul>
+                        </div>
+                    </li>
+                @endcan
+
+
+                @can('عرض نقاط الولاء')
+
+                    <li class="nav-item">
+
+                        <a class="nav-link menu-link" href="#role" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="role">
+                            <i class="mdi mdi-account-group"></i> <span>@lang('translation.loyal')</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="role">
+                            <ul class="nav nav-sm flex-column">
+                                @can('عرض نقاط الولاء')
+                                    <li class="nav-item">
+                                        <a href="/loyalty" class="nav-link">نقاط الولاء</a>
+                                    </li>
+                                @endcan
+
+                                    @can( 'انشاء نقاط ولاء')
+                                        <li class="nav-item">
+                                            <a href="/loyalty/create" class="nav-link">اضافة عميل</a>
+                                        </li>
+                                    @endcan
+
+                            </ul>
+                        </div>
+                    </li>
+
+                @endcan
+
+
+                @can('الاحصائيات')
+
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#reports" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="reports">
+                            <i class="mdi mdi-chart-line"></i> <span>@lang('translation.stats')</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="reports">
+                            <ul class="nav nav-sm flex-column">
+
+                                @can( 'المبيعات')
+                                    <li class="nav-item">
+                                        <a href="/SalesReport" class="nav-link">المبيعات</a>
+                                    </li>
+                                @endcan
+
+                                @can('تقرير المنتجات')
+                                        <li class="nav-item">
+                                            <a href="/productsReport" class="nav-link">مبيعات المنتجات</a>
+                                        </li>
+                                @endcan
+                            </ul>
+                        </div>
+                    </li>
+
+
+                @endcan
+
+
+
+
+
+
+
 
 
 

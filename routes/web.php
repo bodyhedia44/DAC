@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('settings', \App\Http\Controllers\SettingController::class);
 
     Route::get('pos', [\App\Http\Controllers\PosController::class,'index']);
+    Route::post('invoice', [\App\Http\Controllers\PosController::class,'invoice'])->name("invoice");
     Route::get('returns', [\App\Http\Controllers\PosController::class,'returns']);
     Route::post('pos/create', [\App\Http\Controllers\PosController::class,'store'])->name("pos.store");
     Route::post('returns', [\App\Http\Controllers\PosController::class,'returns']);

@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
 {
-
+    function __construct()
+    {
+        $this->middleware('permission:الاعدادات', ['only' => ['index','store']]);
+    }
     public function index()
     {
         $data=Setting::first();
@@ -40,7 +43,7 @@ class SettingController extends Controller
         if ($request->hasFile('img')){
             $path = $request->file('img')->store('logo','public');
         }else{
-            $path="";
+            $path="logo/default.jpg";
         }
         $data=Setting::first();
 
