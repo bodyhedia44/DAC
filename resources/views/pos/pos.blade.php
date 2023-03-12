@@ -8,7 +8,7 @@
         <body id="casher" onload="hide()">
         <form action="{{route('invoice')}}" method="post" id="form">
             {{csrf_field()}}
-            <input type="hidden" name="invoice" id="invoice">
+            <input type="hidden" name="invoice" id="invoice_table">
             <div class="page-container">
                 <div class="not-footer">
                     <header class="page-header" id="bla">
@@ -19,11 +19,11 @@
 
                     <main class="page-body">
                         <div class="casher-container row">
-                            <div class="col-12">
-                                <button>
-                                    search by code
-                                </button>
-                            </div>
+{{--                            <div class="col-12">--}}
+{{--                                <button>--}}
+{{--                                    search by code--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
                         <div class="casher-container row">
 
                             <div class="col-4 table-container">
@@ -47,7 +47,7 @@
                                 <div class="items">
                                     @foreach( $cats as $x)
                                     <a class="item {{$x->id}} cat" onclick="show({{$x->id}})" >
-                                        <img src="{{ URL::asset('assets/images/sandwich.png') }}" alt="" class="item-img">
+{{--                                        <img src="{{ URL::asset('assets/images/sandwich.png') }}" alt="" class="item-img">--}}
                                         <h2 class="item-title">
                                             {{$x->name}}
                                         </h2>
@@ -90,7 +90,7 @@
                                     </span>
 
                                     <div class="text">
-                                        <input type="number" id="quan" value="1" min="1">
+                                        <input type="number" id="quan" value="1" min="1" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -99,7 +99,7 @@
                                     </span>
 
                                     <div class="text">
-                                        <input type="number" name="total" id="total" required readonly>
+                                        <input type="number" name="total" id="total" required readonly class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -108,7 +108,7 @@
                                     </span>
 
                                     <div class="text">
-                                        <input type="number" readonly>
+                                        <input type="number" readonly class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -117,43 +117,29 @@
                                     </span>
 
                                     <div class="text">
-                                        <input type="number" name="net" readonly>
+                                        <input type="number" name="net" readonly class="form-control">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-4 price-container">
-                                <div class="col-12">
-                                        <span>
-                                                طريقة الدفع
-                                            </span>
-                                    <div class="text">
-                                        <select name="option">
-                                            <option value="cash">
-                                                cash
-                                            </option>
-                                            <option value="visa">
-                                                visa
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
+
                                 <div class="col-12">
                                         <span>
                                                 خصم
                                             </span>
 
                                     <div class="text">
-                                        <input type="number" id="sale">
+                                        <input type="number" id="sale" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12" >
                                         <span>
                                                 المدفوع
                                             </span>
 
                                     <div class="text">
-                                        <input type="number" id="paid" onchange="change()" required>
+                                        <input type="number" id="paid" onchange="change()" required class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -162,7 +148,22 @@
                                             </span>
 
                                     <div class="text">
-                                        <input type="number" id="change" readonly>
+                                        <input type="number" id="change" readonly class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                        <span>
+                                                طريقة الدفع
+                                            </span>
+                                    <div class="text">
+                                        <select name="option" class="form-control-sm">
+                                            <option value="cash">
+                                                cash
+                                            </option>
+                                            <option value="visa">
+                                                visa
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -173,11 +174,11 @@
                                         <i class="fa-solid fa-money-bill-1-wave"></i>
                                         دفع
                                     </button>
-                                    <button>
-                                        <i class="fa-solid fa-xmark"></i>
-                                        الغاء
-                                    </button>
-                                    <button>
+{{--                                    <button>--}}
+{{--                                        <i class="fa-solid fa-xmark"></i>--}}
+{{--                                        الغاء--}}
+{{--                                    </button>--}}
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#myModal2">
                                         <i class="fa-solid fa-print"></i>
                                         طباعة
                                     </button>
@@ -193,6 +194,103 @@
             </div>
     </form>
 
+
+        <div id="myModal2" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">الفاتورة</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                    </div>
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>{{\Carbon\Carbon::now()}}</strong>
+
+                            </div>
+                            <div class="card-body" id="pp">
+                                <div class="row mb-4">
+                                    <div class="col-sm-6 center">
+                                        <div>
+                                            الموظف:  <strong>{{auth()->user()->name}}</strong>
+                                        </div>
+                                         <div>الجهة: {{$s->name}}</div>
+                                         <div>المكان: {{$s->location}}</div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="table-responsive-sm">
+                                    <table class="table table-striped" id="invoice">
+                                        <thead>
+                                        <tr>
+                                            <th class="center">#</th>
+                                            <th>Item</th>
+                                            <th class="center">Qty</th>
+                                            <th class="right">Total</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+{{--                                        <tr>--}}
+{{--                                            <td class="center">1</td>--}}
+{{--                                            <td class="left strong">Origin License</td>--}}
+{{--                                            <td class="center">1</td>--}}
+{{--                                            <td class="right">$999,00</td>--}}
+{{--                                        </tr>--}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-5">
+
+                                    </div>
+
+                                    <div class="col-lg-4 col-sm-5 ml-auto" id="p">
+                                        <table class="table table-clear">
+                                            <tbody>
+{{--                                            <tr>--}}
+{{--                                                <td class="left">--}}
+{{--                                                    <strong id="ivoice_total">Subtotal</strong>--}}
+{{--                                                </td>--}}
+{{--                                                <td class="right">$8.497,00</td>--}}
+{{--                                            </tr>--}}
+{{--                                            <tr>--}}
+{{--                                                <td class="left">--}}
+{{--                                                    <strong >Discount (20%)</strong>--}}
+{{--                                                </td>--}}
+{{--                                                <td class="right" id="ivoice_disc">$1,699,40</td>--}}
+{{--                                            </tr>--}}
+{{--                                            <tr>--}}
+{{--                                                <td class="left">--}}
+{{--                                                    <strong>VAT</strong>--}}
+{{--                                                </td>--}}
+{{--                                                <td class="right">$679,76</td>--}}
+{{--                                            </tr>--}}
+                                            <tr>
+                                                <td class="left">
+                                                    <strong>Total</strong>
+                                                </td>
+                                                <td class="right">
+                                                    <strong id="invoice_total"></strong>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <button type="button" onclick="printDiv('pp')"></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         </body>
 
 @endsection
@@ -203,9 +301,26 @@
 
         function addItem(name,price,id){
             const table = document.getElementById("table");
-            const quan = document.getElementById("quan");
             const invoice = document.getElementById("invoice");
+            const quan = document.getElementById("quan");
+            const invoice_h = document.getElementById("invoice_table");
+            fillTable(table,name,price,quan)
+            fillTable(invoice,name,price,quan)
 
+            total+=price*quan.value;
+            console.log(total)
+            const t =document.getElementById("total")
+            const invoice_t =document.getElementById("invoice_total")
+            t.value = total;
+            invoice_t.innerHTML = total +"$";
+
+            const form =document.getElementById("bla");
+            form.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
+            form.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${quan.value}">`
+            quan.value=1;
+            invoice_h.value=table.innerHTML;
+        }
+        function fillTable(table,name,price,quan) {
             var row = table.insertRow(1);
 
             const cell1 = row.insertCell(0);
@@ -215,21 +330,10 @@
 
             cell1.innerHTML = "";
             cell2.innerHTML = name;
-            cell3.innerHTML = price*quan.value;
+            cell3.innerHTML = price * quan.value;
             cell4.innerHTML = quan.value;
 
-            total+=price*quan.value;
-            console.log(total)
-            const t =document.getElementById("total")
-            t.value = total;
-
-            const form =document.getElementById("bla");
-            form.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
-            form.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${quan.value}">`
-            quan.value=1;
-            invoice.value=table.innerHTML;
         }
-
         function hide(){
             document.getElementById("toggle").style.display='none';
             const products =document.getElementsByClassName("prod")
@@ -273,6 +377,15 @@
             }
         }
 
+    </script>
+    <script type="text/javascript">
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
     </script>
 @endsection
 

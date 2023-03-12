@@ -22,7 +22,8 @@ class PosController extends Controller
     public function index(){
         $cats=Category::all();
         $prods=Product::all();
-        return view('pos.pos',compact('cats','prods'));
+        $s=Setting::first();
+        return view('pos.pos',compact('cats','prods','s'));
     }
 
     public function invoice(Request $request){
