@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("img")->default("");
             $table->string("location","");
             $table->double("tax",0);
+            $table->string("tax_number",0);
             $table->timestamps();
         });
     }

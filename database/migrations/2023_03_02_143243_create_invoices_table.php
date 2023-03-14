@@ -18,6 +18,7 @@ return new class extends Migration
             $table->double("money");
             $table->string("payment_type")->nullable();
             $table->string("invoice_type");
+            $table->longText("invoice");
             $table->foreignId('user_id')->constrained();
             $table->softDeletes();
             $table->timestamps();

@@ -6,7 +6,7 @@
 
 
         <body id="casher" onload="hide()">
-        <form action="{{route('invoice')}}" method="post" id="form">
+        <form action="{{route('pos.store')}}" method="post" id="form">
             {{csrf_field()}}
             <input type="hidden" name="invoice" id="invoice_table">
             <div class="page-container">
@@ -188,7 +188,7 @@
 
 
                         </div>
-
+                        </div>
                     </main>
                 </div>
             </div>
@@ -203,7 +203,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                     </div>
                     <div class="container">
-                        <div class="card">
+                        <form action="{{route('invoice')}}" method="post" id="print_form">
+                            {{csrf_field()}}
+<div id="blaHAbl">
+
+</div>
+                            <input type="hidden" name="total" id="total_print">
+                            <div class="card">
                             <div class="card-header">
                                 <strong>{{\Carbon\Carbon::now()}}</strong>
 
@@ -215,7 +221,8 @@
                                             الموظف:  <strong>{{auth()->user()->name}}</strong>
                                         </div>
                                          <div>الجهة: {{$s->name}}</div>
-                                         <div>المكان: {{$s->location}}</div>
+                                        <div>المكان: {{$s->location}}</div>
+                                        <div>الرقم الضريبي: {{$s->tax_number}}</div>
                                     </div>
 
 
@@ -283,8 +290,9 @@
                                 </div>
 
                             </div>
-                            <button type="button" onclick="printDiv('pp')"></button>
+                            <button ></button>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -300,24 +308,38 @@
         let total =0;
 
         function addItem(name,price,id){
-            const table = document.getElementById("table");
-            const invoice = document.getElementById("invoice");
-            const quan = document.getElementById("quan");
-            const invoice_h = document.getElementById("invoice_table");
+            const table = document.getElementById("table")
+            const invoice = document.getElementById("invoice")
+            const quan = document.getElementById("quan")
+            const invoice_h = document.getElementById("invoice_table")
+            const invoice_pp = document.getElementById("blaHAbl")
+
             fillTable(table,name,price,quan)
             fillTable(invoice,name,price,quan)
 
+            invoice_pp.innerHTML=`<input type="hidden" name="invoice" value="${table.innerHTML}">`;
+
             total+=price*quan.value;
-            console.log(total)
+
             const t =document.getElementById("total")
             const invoice_t =document.getElementById("invoice_total")
+            const invoice_p =document.getElementById("total_print")
+
             t.value = total;
+            invoice_p.value = total;
             invoice_t.innerHTML = total +"$";
+
+            const form_print =document.getElementById("print_form");
+            form_print.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
+            form_print.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${quan.value}">`
 
             const form =document.getElementById("bla");
             form.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
             form.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${quan.value}">`
+
             quan.value=1;
+
+
             invoice_h.value=table.innerHTML;
         }
         function fillTable(table,name,price,quan) {
@@ -378,15 +400,7 @@
         }
 
     </script>
-    <script type="text/javascript">
-        function printDiv(divName) {
-            var printContents = document.getElementById(divName).innerHTML;
-            var originalContents = document.body.innerHTML;
-            document.body.innerHTML = printContents;
-            window.print();
-            document.body.innerHTML = originalContents;
-        }
-    </script>
+
 @endsection
 
 

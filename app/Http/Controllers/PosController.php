@@ -26,28 +26,38 @@ class PosController extends Controller
         return view('pos.pos',compact('cats','prods','s'));
     }
 
+
+
     public function invoice(Request $request){
-        $s=Setting::first();
-        $t=$request->invoice;
         $invoice=Invoice::create([
             "money"=>$request->total,
-            "payment_type"=>$request->option,
+            "payment_type"=>"cash",
             "invoice_type"=>"عملية شراء",
             "user_id"=>Auth::user()->id,
+            "invoice"=>$request->invoice
         ]);
 
         foreach ($request->items as $i){
             $item= Sale::findOrFail($i['id']);
             $item->sales=$item->sales+doubleval($i['quan']);
-
             $item->save();
         }
-        return view('pos.invoice',compact('s','invoice','t'));
+      return Redirect::away("/showInvoice/".$invoice->id);
+//       return redirect("/pos");
     }
+
+
+    function showInvcoice($id){
+        $s=Setting::first();
+        $invoice=Invoice::findOrFail($id);
+        return view("pos.invoice",compact('s','invoice'));
+    }
+
 
     public function returns(){
         return view('pos.returns');
     }
+
 
     public function store(Request $request){
         if ($request->has("option")){
@@ -56,6 +66,7 @@ class PosController extends Controller
                 "payment_type"=>$request->option,
                 "invoice_type"=>"عملية شراء",
                 "user_id"=>Auth::user()->id,
+                'invoice'=>$request->invoice
             ]);
 
             foreach ($request->items as $i){
@@ -64,18 +75,18 @@ class PosController extends Controller
 
                $item->save();
             }
-            return redirect()->route('invoice', ['table' => $request->invoice]);
+            return redirect("/pos");
         }else{
             Invoice::create([
                 "money"=>$request->money*-1,
                 "payment_type"=>"---",
                 "invoice_type"=>"مرتجع",
-                "user_id"=>Auth::user()->id,]);
+                "user_id"=>Auth::user()->id,
+                'invoice'=>"-------"
+            ]);
+
             session()->flash("add","تم اضافة المرتجع بنجاح");
             return redirect('/returns');
         }
-
-
-        return redirect('/pos');
     }
 }
