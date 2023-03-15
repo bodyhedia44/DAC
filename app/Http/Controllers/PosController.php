@@ -42,14 +42,14 @@ class PosController extends Controller
             $item->sales=$item->sales+doubleval($i['quan']);
             $item->save();
         }
-      return Redirect::away("/showInvoice/".$invoice->id);
+      return Redirect::away("/showInvoice/".$invoice->uuid);
 //       return redirect("/pos");
     }
 
 
     function showInvcoice($id){
         $s=Setting::first();
-        $invoice=Invoice::findOrFail($id);
+        $invoice=Invoice::find($id);
         return view("pos.invoice",compact('s','invoice'));
     }
 
@@ -62,7 +62,7 @@ class PosController extends Controller
     public function store(Request $request){
         if ($request->has("option")){
             Invoice::create([
-                "money"=>$request->total,
+                "money"=>$request->net,
                 "payment_type"=>$request->option,
                 "invoice_type"=>"عملية شراء",
                 "user_id"=>Auth::user()->id,

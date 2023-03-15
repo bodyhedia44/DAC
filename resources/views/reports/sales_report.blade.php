@@ -58,6 +58,14 @@
                     })
                 },
                 'الاجمالي','وسيلة الدفع',
+                {
+                    name:  'الفاتورة',
+                    formatter: (function (cell) {
+                       return gridjs.html('' + cell + '');
+                        ;
+                    })
+                },
+
             ],
             pagination: {
                 limit: 10
@@ -68,7 +76,12 @@
                     @foreach($data as $d)
                         <?php $i++?>
                 ["{{$i}}", "{{$d->user->name}}","{{$d->invoice_type}}", "{{$d->money}}",
-                        "{{$d->payment_type}}"
+                        "{{$d->payment_type}}",
+            @if($d->invoice== "-------")
+             "------"
+            @else
+             '<a href="/showInvoice/{{$d->uuid}}">عرض الفاتورة</a>'
+        @endif
                     ],
                 @endforeach
             ]

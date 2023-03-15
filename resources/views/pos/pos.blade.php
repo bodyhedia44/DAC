@@ -108,7 +108,7 @@
                                     </span>
 
                                     <div class="text">
-                                        <input type="number" readonly class="form-control">
+                                        <input type="number" id="tax" readonly class="form-control" value="{{$s->tax}}">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -117,7 +117,7 @@
                                     </span>
 
                                     <div class="text">
-                                        <input type="number" name="net" readonly class="form-control">
+                                        <input type="number" id="net" name="net" readonly class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                                             </span>
 
                                     <div class="text">
-                                        <input type="number" id="paid" onchange="change()" required class="form-control">
+                                        <input type="number" id="paid" onchange="paidChange()" required class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -322,12 +322,16 @@
             total+=price*quan.value;
 
             const t =document.getElementById("total")
+            const n =document.getElementById("net")
+            const tax =document.getElementById("tax")
+            const sale =document.getElementById("sale")
             const invoice_t =document.getElementById("invoice_total")
             const invoice_p =document.getElementById("total_print")
 
             t.value = total;
-            invoice_p.value = total;
-            invoice_t.innerHTML = total +"$";
+            n.value = total+(tax.value * total / 100) - (sale.value * total / 100)
+            invoice_p.value = n.value;
+            invoice_t.innerHTML =  n.value +"$";
 
             const form_print =document.getElementById("print_form");
             form_print.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
@@ -388,7 +392,7 @@
 
 
 
-        function change(){
+        function paidChange(){
             if (total===0){}
             else{
                 let paid=document.getElementById('paid').value;
