@@ -47,7 +47,7 @@
                                 <td>{{$x->category->name}}</td>
                                 <td>{{$x->price}}</td>
                                 @if($x->img=="")
-                                    <td><img src="{{URL::asset('assets/images/products/pp.png')}}"></td>
+                                    <td><img src="{{URL::asset('assets/images/products/pp.png')}}" width="50"></td>
 {{--                                    <td><img src="https://static.thenounproject.com/png/1375593-200.png" width="50"></td>--}}
 
                                 @else
