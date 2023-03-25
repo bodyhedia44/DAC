@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ProductExport;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -17,6 +19,11 @@ class ProductController extends Controller
         $this->middleware('permission:انشاء منتجات', ['only' => ['create','store']]);
         $this->middleware('permission:تعديل منتجات', ['only' => ['edit','update']]);
         $this->middleware('permission:حذف منتج', ['only' => ['destroy']]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProductExport, 'products.xlsx');
     }
 
     public function index()

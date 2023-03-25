@@ -26,6 +26,8 @@
                 </div><!-- end card header -->
 
                 <div class="card-body">
+                    <a class="modal-effect btn btn-sm btn-success mb-3" href="/productsReport/export"
+                       style="color:white"><i class="fas fa-file-download"></i>&nbsp;تصدير اكسيل</a>
                     <div id="table-gridjs1"></div>
                 </div><!-- end card-body -->
             </div><!-- end card -->

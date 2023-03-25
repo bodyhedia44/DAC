@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\InvoiceExport;
+use App\Exports\SaleExport;
 use App\Models\Invoice;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportsController extends Controller
 {
@@ -13,6 +16,16 @@ class ReportsController extends Controller
     {
         $this->middleware('permission:المبيعات', ['only' => ['productsReport','updateProducts']]);
         $this->middleware('permission:تقرير المنتجات', ['only' => ['salesReport']]);
+    }
+
+    public function exportInvoice()
+    {
+        return Excel::download(new InvoiceExport, 'invoices.xlsx');
+    }
+
+    public function exportSale()
+    {
+        return Excel::download(new SaleExport, 'sales.xlsx');
     }
 
     function productsReport(){

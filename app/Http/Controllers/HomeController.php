@@ -39,6 +39,7 @@ class HomeController extends Controller
         App::setLocale("ae");
 
         return view('index');
+//        return view('home')
     }
 
     /*Language Translation*/

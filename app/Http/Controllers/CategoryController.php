@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CategoryExport;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -15,6 +17,11 @@ class CategoryController extends Controller
         $this->middleware('permission:تعديل تصنيفات', ['only' => ['edit','update']]);
         $this->middleware('permission:حذف تصنيف', ['only' => ['destroy']]);
     }
+    public function export()
+    {
+        return Excel::download(new CategoryExport, 'category.xlsx');
+    }
+
     public function index()
     {
         $cat=Category::all();

@@ -20,6 +20,8 @@
                 </div><!-- end card header -->
 
                 <div class="card-body">
+                    <a class="modal-effect btn btn-sm btn-success" href="/loyalty/export"
+                       style="color:white"><i class="fas fa-file-download"></i>&nbsp;تصدير اكسيل</a>
                     <table class="table table-striped">
                         <thead>
                         <tr>

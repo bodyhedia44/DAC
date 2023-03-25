@@ -19,9 +19,22 @@ Auth::routes();
 //Language Translation
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
-
+Route::get('showInvoice/{id}', [\App\Http\Controllers\PosController::class,'showInvcoice']);
+Route::get('/',function (){
+    return view('home');
+} );
 
 Route::middleware(['auth'])->group(function () {
+
+
+    Route::get('category/export/', [\App\Http\Controllers\CategoryController::class, 'export']);
+    Route::get('product/export/', [\App\Http\Controllers\ProductController::class, 'export']);
+    Route::get('loyalty/export/', [\App\Http\Controllers\LoyaltyController::class, 'export']);
+    Route::get('productsReport/export/', [\App\Http\Controllers\ReportsController::class, 'exportSale']);
+    Route::get('SalesReport/export/', [\App\Http\Controllers\ReportsController::class, 'exportInvoice']);
+
+
+
     Route::resource('roles', RoleController::class);
 
     Route::resource('users', UserController::class);
@@ -30,7 +43,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('pos', [\App\Http\Controllers\PosController::class,'index']);
     Route::post('invoice', [\App\Http\Controllers\PosController::class,'invoice'])->name("invoice");
-    Route::get('showInvoice/{id}', [\App\Http\Controllers\PosController::class,'showInvcoice']);
     Route::get('returns', [\App\Http\Controllers\PosController::class,'returns']);
     Route::post('pos/create', [\App\Http\Controllers\PosController::class,'store'])->name("pos.store");
     Route::post('returns', [\App\Http\Controllers\PosController::class,'returns']);
@@ -44,9 +56,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource("product", \App\Http\Controllers\ProductController::class,);
 
     Route::resource("loyalty", \App\Http\Controllers\LoyaltyController::class,);
+
+
 });
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+
 
 //Update User Details
 Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');

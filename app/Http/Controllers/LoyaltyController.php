@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LoyaltyExport;
 use App\Models\Category;
 use App\Models\Loyalty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LoyaltyController extends Controller
 {
@@ -16,6 +18,14 @@ class LoyaltyController extends Controller
         $this->middleware('permission:تعديل نقاط الولاء', ['only' => ['edit','update']]);
         $this->middleware('permission:حذف نقاط الولاء', ['only' => ['destroy']]);
     }
+
+    public function export()
+    {
+
+//        dd('hh');
+        return Excel::download(new LoyaltyExport, 'loyalty.xlsx');
+    }
+
     public function index()
     {
         $cat=Loyalty::all();
