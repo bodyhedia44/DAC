@@ -55,7 +55,7 @@
                                     @endforeach
 
                                         @foreach($prods as $y)
-                                            <a id="{{$y->category->id}}" class="item prod {{$x->id}}"
+                                            <a id="{{$y->category->id}}" class="item prod {{$y->category->id}}"
                                                onclick="addItem('{{$y->name}}',{{$y->price}},'{{$y->id}}')">
                                                 <img src="{{asset('storage/'.$y->img)}}" alt="" class="item-img">
                                                 <h2 class="item-title">
@@ -371,13 +371,18 @@
 
         function show (id) {
             const targetDiv = document.getElementsByClassName(`${id}`);
-            document.getElementById("toggle").style.display='flex';
-            for (let i =0 ; i<targetDiv.length;i++){
+            const cat = document.getElementsByClassName(`cat`);
+            document.getElementById("toggle").style.display = 'flex';
+            for (let i = 0; i < targetDiv.length; i++) {
                 if (targetDiv.item(i).style.display !== "none") {
                     targetDiv.item(i).style.display = "none";
                 } else {
                     targetDiv.item(i).style.display = "flex";
                 }
+            }
+
+            for (let i = 0; i < cat.length; i++) {
+                cat.item(i).style.display = "none";
             }
 
         }

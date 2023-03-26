@@ -35,7 +35,7 @@
 
                 @can('الصفحة الرئيسية')
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ url('/' . $page='') }}"
+                        <a class="nav-link menu-link" href="{{ url('/index' . $page='') }}"
                            role="button"
                            aria-expanded="false" aria-controls="">
                             <i class="bx bx-home-circle"></i> <span>@lang('translation.main')</span>

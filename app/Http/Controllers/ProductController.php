@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\ProductExport;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\sale;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
@@ -43,12 +43,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(), [
-            'name' => 'required|max:255|String',
+            'name' => 'required|max:255|String|unique:products',
             'price' => 'required|max:50',
             'category' => 'required',
         ],
             [
                 'required' => 'يجب ان تقوم بادخال القول المطلوبة',
+                'unique' => 'هذا المنتج موجود من قبل',
             ]
         )->validate();
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>it-duc</title>
+    <title>DAC</title>
 
     <link rel="icon" href="{{ URL::asset('assets/logo.png') }}">
 {{--    <link rel="icon" href="../../../it-dac-main/assets/logo.png">--}}
@@ -27,10 +27,10 @@
                                 <a href="/">الرئيسية</a>
                             </li>
                             <li>
-                                <a href="#0">تواصل معنا</a>
+                                <a href="https://wa.me/966594300266">تواصل معنا</a>
                             </li>
                             <li>
-                                <a href="#0">من نحن</a>
+                                <a href="#about">من نحن</a>
                             </li>
                             <!-- <li>
                                 <a href="#0">المدونة</a>
@@ -44,7 +44,7 @@
             </header>
 
             <main class="page-body">
-                <section class="banner">
+                <section class="banner" id="about">
                     <div class="layer">
 
                         <div class="section-title">
@@ -54,11 +54,13 @@
                             </h2>
 
                             <p>
-                                هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص
-                                العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد
-                                الحروف التى يولدها التطبيق.
-                                إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما
-                                تريد.
+{{--                                هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص--}}
+{{--                                العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد--}}
+{{--                                الحروف التى يولدها التطبيق.--}}
+{{--                                إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما--}}
+{{--                                تريد.--}}
+
+                                من نحن : تقدم داك مجموعة من الخدمات التقنية للأعمال تشمل تطوير البرمجيات والبنية التحتية، والتشغيل، بالإضافة إلى استشارات التحول الرقمي وعدد من المنتجات الموجهة للأعمال الصغيرة والمتوسطة.
                             </p>
                         </div>
                         <div class="image">
@@ -80,20 +82,18 @@
                     <div class="offers-container row">
                         <div class="offer col-xl-4 col-sm-6">
                             <div class="offer-icon">
-                                <i class="fa-solid fa-gear"></i>
+                                <i class="fa-solid fa-lock"></i>
                             </div>
 
                             <div class="offer-title">
                                 <h2>
-                                    ميزة
+                                    درجة عالية من الأمان
                                 </h2>
                             </div>
 
                             <div class="offer-description">
                                 <p>
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد
-                                    النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى
-                                    زيادة عدد الحروف
+                                    كن اَمنا ومتوافقاً من خلال تخزين بيانات في منطقة الشرق الاوسط وشمال أفريقيا.
                                 </p>
                             </div>
                         </div>
@@ -104,95 +104,92 @@
 
                             <div class="offer-title">
                                 <h2>
-                                    ميزة
+                                    ضمان الخدمة
                                 </h2>
                             </div>
 
                             <div class="offer-description">
                                 <p>
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد
-                                    النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى
-                                    زيادة عدد الحروف
+                                    خبراء متخصصون في تقديم الخدمات يضمنون إتقاناً سلساً في ترحيل البيانات.
                                 </p>
                             </div>
                         </div>
                         <div class="offer col-xl-4 col-sm-6">
                             <div class="offer-icon">
-                                <i class="fa-solid fa-gear"></i>
+{{--                                <i class="fa-solid fa-hundred-points"></i>--}}
+                                <i class="fa-solid fa-phone"></i>
                             </div>
 
                             <div class="offer-title">
                                 <h2>
-                                    ميزة
+                                    الدعم المحلي 365/7/24
                                 </h2>
                             </div>
 
                             <div class="offer-description">
                                 <p>
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد
-                                    النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى
-                                    زيادة عدد الحروف
+                                    دعم محلي قياسي مضمن 365/7/24 مع كل إشتراك
                                 </p>
                             </div>
                         </div>
-                        <div class="offer col-xl-4 col-sm-6">
-                            <div class="offer-icon">
-                                <i class="fa-solid fa-toolbox"></i>
-                            </div>
+{{--                        <div class="offer col-xl-4 col-sm-6">--}}
+{{--                            <div class="offer-icon">--}}
+{{--                                <i class="fa-solid fa-toolbox"></i>--}}
+{{--                            </div>--}}
 
-                            <div class="offer-title">
-                                <h2>
-                                    ميزة
-                                </h2>
-                            </div>
+{{--                            <div class="offer-title">--}}
+{{--                                <h2>--}}
+{{--                                    ميزة--}}
+{{--                                </h2>--}}
+{{--                            </div>--}}
 
-                            <div class="offer-description">
-                                <p>
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد
-                                    النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى
-                                    زيادة عدد الحروف
-                                </p>
-                            </div>
-                        </div>
-                        <div class="offer col-xl-4 col-sm-6">
-                            <div class="offer-icon">
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
+{{--                            <div class="offer-description">--}}
+{{--                                <p>--}}
+{{--                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد--}}
+{{--                                    النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى--}}
+{{--                                    زيادة عدد الحروف--}}
+{{--                                </p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="offer col-xl-4 col-sm-6">--}}
+{{--                            <div class="offer-icon">--}}
+{{--                                <i class="fa-regular fa-heart"></i>--}}
+{{--                            </div>--}}
 
-                            <div class="offer-title">
-                                <h2>
-                                    ميزة
-                                </h2>
-                            </div>
+{{--                            <div class="offer-title">--}}
+{{--                                <h2>--}}
+{{--                                    ميزة--}}
+{{--                                </h2>--}}
+{{--                            </div>--}}
 
-                            <div class="offer-description">
-                                <p>
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد
-                                    النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى
-                                    زيادة عدد الحروف
-                                </p>
-                            </div>
-                        </div>
+{{--                            <div class="offer-description">--}}
+{{--                                <p>--}}
+{{--                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد--}}
+{{--                                    النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى--}}
+{{--                                    زيادة عدد الحروف--}}
+{{--                                </p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="offer col-xl-4 col-sm-6">
-                            <div class="offer-icon">
-                                <i class="fa-solid fa-gear"></i>
-                            </div>
+{{--                        <div class="offer col-xl-4 col-sm-6">--}}
+{{--                            <div class="offer-icon">--}}
+{{--                                <i class="fa-solid fa-gear"></i>--}}
+{{--                            </div>--}}
 
-                            <div class="offer-title">
-                                <h2>
-                                    ميزة
-                                </h2>
-                            </div>
+{{--                            <div class="offer-title">--}}
+{{--                                <h2>--}}
+{{--                                    ميزة--}}
+{{--                                </h2>--}}
+{{--                            </div>--}}
 
-                            <div class="offer-description">
-                                <p>
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد
-                                    النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى
-                                    زيادة عدد الحروف
-                                </p>
-                            </div>
-                        </div>
+{{--                            <div class="offer-description">--}}
+{{--                                <p>--}}
+{{--                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد--}}
+{{--                                    النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى--}}
+{{--                                    زيادة عدد الحروف--}}
+{{--                                </p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
 
                 </section>
@@ -202,8 +199,8 @@
                         <h1>
                             تواصل معنا للحصول على تجربة مجانية
                         </h1>
-                        <button>
-                            تواصل معنا
+                        <button >
+                           <a href="https://wa.me/966594300266">تواصل معنا</a>
                         </button>
                     </div>
                 </section>
@@ -211,43 +208,45 @@
                 <section class="free">
                     <div class="section-title">
                         <h2>
-                            خدمات
-                            <span>مجانية</span>
-                            طوال فترة الاشتراك
+                            منتجات
+                            <span>احترافية</span>
+                           تقدم افضل النتائج
                         </h2>
                     </div>
 
                     <div class="services-container">
                         <div class="service">
                             <div class="service-icon">
-                                <i class="fa-regular fa-pen-to-square"></i>
+{{--                                <i class="fa-regular fa-pen-to-square"></i>--}}
+                                <i class="fa-sharp fa-solid fa-store"></i>
                             </div>
                             <div class="service-title">
-                                <h2>خدمة</h2>
+                                <h2>برنامج نقاط البيع POS</h2>
                             </div>
                         </div>
                         <div class="service">
                             <div class="service-icon">
-                                <i class="fa-regular fa-pen-to-square"></i>
+                                <i class="fa-solid fa-road-bridge"></i>
                             </div>
                             <div class="service-title">
-                                <h2>خدمة</h2>
+                                <h2>حلول البنية التحتية .</h2>
                             </div>
                         </div>
                         <div class="service">
                             <div class="service-icon">
-                                <i class="fa-regular fa-pen-to-square"></i>
+                                <i class="fa-solid fa-robot"></i>
                             </div>
                             <div class="service-title">
-                                <h2>خدمة</h2>
+                                <h2>الذكاء الاصطناعي و انترنت الاشياء .
+                                </h2>
                             </div>
                         </div>
                         <div class="service">
                             <div class="service-icon">
-                                <i class="fa-regular fa-pen-to-square"></i>
+                                <i class="fa-solid fa-network-wired"></i>
                             </div>
                             <div class="service-title">
-                                <h2>خدمة</h2>
+                                <h2>برنامج كنترول</h2>
                             </div>
                         </div>
 
