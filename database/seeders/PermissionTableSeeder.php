@@ -36,6 +36,8 @@ class PermissionTableSeeder extends Seeder
             'الاحصائيات',
             'المبيعات',
             'تقرير المنتجات',
+            'المخزون',
+            'المحاسبة',
         ];
 
         foreach ($permissions as $permission) {

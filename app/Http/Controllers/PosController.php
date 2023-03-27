@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Inventory;
 use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\Sale;
@@ -42,6 +43,13 @@ class PosController extends Controller
             $item->sales=$item->sales+doubleval($i['quan']);
             $item->save();
         }
+
+        foreach ($request->items as $i2){
+            $item2= Inventory::findOrFail($i2['id']);
+            $item2->sales=$item->sales-doubleval($i2['quan']);
+            $item2->save();
+        }
+
       return Redirect::away("/showInvoice/".$invoice->uuid);
 //       return redirect("/pos");
     }
@@ -75,6 +83,13 @@ class PosController extends Controller
 
                $item->save();
             }
+
+            foreach ($request->items as $i2){
+                $item2= Inventory::findOrFail($i2['id']);
+                $item2->sales=$item->sales-doubleval($i2['quan']);
+                $item2->save();
+            }
+
             return redirect("/pos");
         }else{
             Invoice::create([

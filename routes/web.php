@@ -30,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('category/export/', [\App\Http\Controllers\CategoryController::class, 'export']);
     Route::get('product/export/', [\App\Http\Controllers\ProductController::class, 'export']);
     Route::get('loyalty/export/', [\App\Http\Controllers\LoyaltyController::class, 'export']);
+    Route::get('inventory/export/', [\App\Http\Controllers\InventoryController::class, 'export']);
+    Route::get('accountant/export/', [\App\Http\Controllers\AccountantController::class, 'export']);
     Route::get('productsReport/export/', [\App\Http\Controllers\ReportsController::class, 'exportSale']);
     Route::get('SalesReport/export/', [\App\Http\Controllers\ReportsController::class, 'exportInvoice']);
 
@@ -38,6 +40,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('roles', RoleController::class);
 
     Route::resource('users', UserController::class);
+
+    Route::resource('inventory', \App\Http\Controllers\InventoryController::class);
+    Route::resource('accountant', \App\Http\Controllers\AccountantController::class);
 
     Route::resource('settings', \App\Http\Controllers\SettingController::class);
 

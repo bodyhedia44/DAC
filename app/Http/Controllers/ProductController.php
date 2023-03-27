@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\ProductExport;
 use App\Models\Category;
+use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\Sale;
 use Illuminate\Http\Request;
@@ -70,6 +71,12 @@ class ProductController extends Controller
         Sale::create([
             "id"=>$p->id,
             "name"=>$request->name,
+        ]);
+
+        Inventory::create([
+            "id"=>$p->id,
+            "name"=>$request->name,
+            "amount"=>$request->amount
         ]);
 
         session()->flash("add","تم اضافة المنتج بنجاح");

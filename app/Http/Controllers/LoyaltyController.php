@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\LoyaltyExport;
 use App\Models\Category;
 use App\Models\Loyalty;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
@@ -74,27 +75,36 @@ class LoyaltyController extends Controller
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Loyalty  $loyalty
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Loyalty $loyalty)
+    public function update(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'name' => 'required|max:50|String',
+            'phone' => 'required|max:50',
+
+        ],
+            [
+                'required' => 'يجب ان تقوم بادخال كل الحقول',
+                'unique'=>"يوجد حقل موجود مسبقا"
+            ]
+        )->validate();
+
+        $c= Loyalty::find($request->id);
+
+
+        $c->name=$request->name;
+        $c->phone=$request->phone;
+        $c->points=$request->points;
+        $c->save();
+//        dd($c);
+
+        session()->flash("add","تم تعديل العميل بنجاح");
+        return redirect("/loyalty");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Loyalty  $loyalty
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Loyalty $loyalty)
+    public function destroy(Request $request)
     {
-        //
+        Loyalty::find($request->id)->delete();
+        session()->flash("del","تم حذف العميل بنجاح");
+        return redirect("/loyalty");
     }
 }

@@ -52,6 +52,13 @@
                 </div>
             </div>
             <!--end col-->
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="code" class="form-label">المخزون (اختياري)</label>
+                    <input type="text" class="form-control" placeholder="مخزون المنتج" id="amount" name="amount">
+                </div>
+            </div>
+
 
             <div>
                 <label for="formFile" class="form-label">صورة المنتج (اختياري)</label>
