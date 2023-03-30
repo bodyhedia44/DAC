@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("type");
             $table->double("amount");
-            $table->text("notes");
+            $table->text("notes")->nullable();
             $table->timestamps();
         });
     }

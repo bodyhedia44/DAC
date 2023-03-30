@@ -1,12 +1,12 @@
 @extends('layouts.master')
-@section('title') المنتجات  @endsection
+@section('title') المخزون  @endsection
 @section('css')
     <link rel="stylesheet" href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}">
 @endsection
 @section('content')
     @component('components.breadcrumb')
-        @slot('li_1') المنتجات @endslot
-        @slot('title') المنتجات @endslot
+        @slot('li_1') المخزون @endslot
+        @slot('title') المخزون @endslot
     @endcomponent
     @if(session()->has('add'))
         <div class="alert alert-success" role="alert">
@@ -22,7 +22,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0 flex-grow-1">كل المنتجات</h4>
+                    <h4 class="card-title mb-0 flex-grow-1">المخزون</h4>
                 </div><!-- end card header -->
 
                 <div class="card-body">
@@ -108,7 +108,7 @@
                         <?php $i++?>
                 ["{{$i}}", "{{$d->name}}", "{{$d->amount}}",
 
-                        ' <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-id="{{$d->id}}" data-name="{{$d->name}}"  data-quan="{{$d->sales}}" data-bs-target="#myModal"><i class="ri-edit-line"></i></button>'
+                        ' <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-id="{{$d->id}}" data-name="{{$d->name}}"  data-quan="{{$d->amount}}" data-bs-target="#myModal"><i class="ri-edit-line"></i></button>'
                     ],
                     @endforeach
             ]

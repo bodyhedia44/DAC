@@ -1,9 +1,9 @@
 @extends('layouts.master')
-@section('title') الاعدادات @endsection
+@section('title') المرتجع @endsection
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1')  @endslot
-        @slot('title') الاعدادات   @endslot
+        @slot('title') المرتجع   @endslot
     @endcomponent
     @if(session()->has('add'))
         <div class="alert alert-success" role="alert">

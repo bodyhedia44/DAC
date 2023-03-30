@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Exports\AccountantExport;
 use App\Exports\ProductExport;
 use App\Models\Accountant;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AccountantController extends Controller
@@ -23,77 +25,57 @@ class AccountantController extends Controller
     {
         return Excel::download(new AccountantExport, 'products.xlsx');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $data=Accountant::all();
+
+        return view("accountant.notes",compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view("accountant.add_notes");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'name' => 'required|max:255|String',
+            'price' => 'required|max:50',
+        ],
+            [
+                'required' => 'يجب ان تقوم بادخال القول المطلوبة',
+            ]
+        )->validate();
+
+        $p=Accountant::create([
+            "type"=>$request->name,
+            'amount'=>$request->price,
+            'notes'=>$request->notes,
+        ]);
+
+        session()->flash("add","تم اضافة المنتج بنجاح");
+        return redirect("/accountant/create");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Accountant  $accountant
-     * @return \Illuminate\Http\Response
-     */
     public function show(Accountant $accountant)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Accountant  $accountant
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Accountant $accountant)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Accountant  $accountant
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Accountant $accountant)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Accountant  $accountant
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Accountant $accountant)
     {
         //

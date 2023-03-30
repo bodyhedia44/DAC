@@ -1,9 +1,9 @@
 @extends('layouts.master')
-@section('title') التصنيفات  @endsection
+@section('title') نقاط الولاء  @endsection
 @section('content')
     @component('components.breadcrumb')
-        @slot('li_1') المنتجات @endslot
-        @slot('title') التصنيفات @endslot
+        @slot('li_1') نقاط الولاء @endslot
+        @slot('title') نقاط الولاء @endslot
     @endcomponent
     <link rel="stylesheet" href="{{ URL::asset('assets/libs/dropzone/dropzone.css') }}" type="text/css" />
     @if(session()->has('add'))
@@ -29,7 +29,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0 flex-grow-1">كل التصنيفات</h4>
+                    <h4 class="card-title mb-0 flex-grow-1">كل نقاط الولاء</h4>
                 </div><!-- end card header -->
 
                 <div class="card-body">

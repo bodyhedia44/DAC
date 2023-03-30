@@ -1,9 +1,9 @@
 @extends('layouts.master')
-@section('title') المنتجات  @endsection
+@section('title') المستخدمين  @endsection
 @section('content')
     @component('components.breadcrumb')
-        @slot('li_1') المنتجات @endslot
-        @slot('title') المنتجات @endslot
+        @slot('li_1') المستخدمين @endslot
+        @slot('title') المستخدمين @endslot
     @endcomponent
     @if (session('success'))
         <div class="alert alert-success">
@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0 flex-grow-1 mb-3">كل المنتجات</h4>
+                    <h4 class="card-title mb-0 flex-grow-1 mb-3">كل المستخدمين</h4>
                     <div class="col-sm-1 col-md-2">
                         @can('اضافة مستخدم')
                             <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}">اضافة مستخدم</a>

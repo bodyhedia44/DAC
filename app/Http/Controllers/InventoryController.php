@@ -39,15 +39,15 @@ class InventoryController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $c= Inventory::find($request->id);
+        $c->amount=$request->sales;
+        $c->save();
+//        dd($c);
+
+        session()->flash("add","تم تعديل المخزون بنجاح");
+        return redirect("/inventory");
     }
 
     /**

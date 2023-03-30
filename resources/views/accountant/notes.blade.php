@@ -1,12 +1,12 @@
 @extends('layouts.master')
-@section('title') التقارير  @endsection
+@section('title') المحاسبة  @endsection
 @section('css')
     <link rel="stylesheet" href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}">
 @endsection
 @section('content')
     @component('components.breadcrumb')
-        @slot('li_1') المبيعات @endslot
-        @slot('title') الفواتير @endslot
+        @slot('li_1') المحاسبة @endslot
+        @slot('title') المحاسبة @endslot
     @endcomponent
     @if(session()->has('add'))
         <div class="alert alert-success" role="alert">
@@ -22,11 +22,11 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0 flex-grow-1">كل الفواتير</h4>
+                    <h4 class="card-title mb-0 flex-grow-1">قسم المحاسبة</h4>
                 </div><!-- end card header -->
 
                 <div class="card-body">
-                    <a class="modal-effect btn btn-sm btn-success mb-3" href="/SalesReport/export"
+                    <a class="modal-effect btn btn-sm btn-success mb-3" href="/productsReport/export"
                        style="color:white"><i class="fas fa-file-download"></i>&nbsp;تصدير اكسيل</a>
                     <div id="table-gridjs1"></div>
                 </div><!-- end card-body -->
@@ -34,6 +34,7 @@
         </div>
         <!-- end col -->
     </div>
+
 @endsection
 @section('script')
     <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
@@ -52,22 +53,31 @@
                         return gridjs.html('' + cell + '');
                     })
                 },
-                'منفذ العملية',
                 {
-                    name: 'حالة العملية',
+                    name: "النوع",
+                    width: '100px',
                     formatter: (function (cell) {
-                        return gridjs.html('' + cell + '');
+                        return gridjs.html(
+                            "" + cell+"");
                     })
                 },
-                'الاجمالي','وسيلة الدفع',
                 {
-                    name:  'الفاتورة',
+                    name: "المبلغ",
+                    width: '100px',
                     formatter: (function (cell) {
-                       return gridjs.html('' + cell + '');
-                        ;
+                        return gridjs.html(
+                            "" + cell+"");
                     })
                 },
 
+                {
+                    name: 'الملاحظات',
+                    width: '150px',
+                    formatter: (function (cell) {
+                        return gridjs.html(
+                            "" + cell+"");
+                    })
+                },
             ],
             pagination: {
                 limit: 10
@@ -75,19 +85,13 @@
             search: true,
             data: [
                     <?php $i=0?>
-                    @foreach($data as $d)
+                @foreach($data as $d)
                         <?php $i++?>
-                ["{{$i}}", "{{$d->user->name}}","{{$d->invoice_type}}", "{{$d->money}}",
-                        "{{$d->payment_type}}",
-            @if($d->invoice== "-------")
-             "------"
-            @else
-             '<a href="/showInvoice/{{$d->uuid}}">عرض الفاتورة</a>'
-        @endif
+                ["{{$i}}", "{{$d->type}}", "{{$d->amount}}","{{$d->notes}}"
+
                     ],
-                @endforeach
+                    @endforeach
             ]
         }).render(document.getElementById("table-gridjs1"));
-
     </script>
 @endsection

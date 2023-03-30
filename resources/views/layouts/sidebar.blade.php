@@ -74,6 +74,41 @@
                     </li>
                 @endcan
 
+                @can('المخزون')
+
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="/inventory" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                            <i class="mdi mdi-store"></i> <span>المخزون</span>
+
+                        </a>
+                    </li>
+                @endcan
+
+                @can('المحاسبة')
+
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#acc" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="acc">
+                            <i class="bx bx-calculator"></i> <span>المحاسبة</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="acc">
+                            <ul class="nav nav-sm flex-column">
+
+                                    <li class="nav-item">
+                                        <a href="/accountant/create" class="nav-link">اضافة بند محاسبة</a>
+                                    </li>
+
+
+                                    <li class="nav-item">
+                                        <a href="/accountant" class="nav-link">قسم المحاسبة</a>
+                                    </li>
+
+
+                            </ul>
+                        </div>
+                    </li>
+                @endcan
+
                 @can("عرض التصنيفات")
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#cat" data-bs-toggle="collapse" role="button"

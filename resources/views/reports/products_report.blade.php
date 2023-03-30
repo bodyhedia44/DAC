@@ -1,12 +1,12 @@
 @extends('layouts.master')
-@section('title') المنتجات  @endsection
+@section('title') التقارير  @endsection
 @section('css')
     <link rel="stylesheet" href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}">
 @endsection
 @section('content')
     @component('components.breadcrumb')
-        @slot('li_1') المنتجات @endslot
-        @slot('title') المنتجات @endslot
+        @slot('li_1') المبيعات @endslot
+        @slot('title') مبيعات المنتجات @endslot
     @endcomponent
     @if(session()->has('add'))
         <div class="alert alert-success" role="alert">
