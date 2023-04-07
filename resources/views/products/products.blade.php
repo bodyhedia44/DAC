@@ -87,7 +87,7 @@
                     <h5 class="modal-title" id="myModalLabel">تعديل تصنيف</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                 </div>
-                <form action="/product/update" method="post">
+                <form action="/product/update" method="post" enctype="multipart/form-data">
                     {{method_field('patch')}}
                     {{csrf_field()}}
                     <div class="modal-body">

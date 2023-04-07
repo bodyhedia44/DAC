@@ -149,7 +149,25 @@
             <tbody>
             <tr>
                 <td class="left">
-                    <strong>Total</strong>
+                    <strong> المجموع بدون الضريبة</strong>
+                </td>
+                <td class="right">
+                    <strong id="invoice_total">${{$invoice->money - $invoice->tax}}</strong>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="left">
+                    <strong>الضريبة</strong>
+                </td>
+                <td class="right">
+                    <strong id="invoice_total">${{$invoice->tax}}</strong>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="left">
+                    <strong>المجموع بدون الضريبة</strong>
                 </td>
                 <td class="right">
                     <strong id="invoice_total">${{$invoice->money}}</strong>

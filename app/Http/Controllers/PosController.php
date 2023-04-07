@@ -35,6 +35,7 @@ class PosController extends Controller
             "payment_type"=>"cash",
             "invoice_type"=>"عملية شراء",
             "user_id"=>Auth::user()->id,
+            "tax"=>$request->tax,
             "invoice"=>$request->invoice
         ]);
 
@@ -46,7 +47,7 @@ class PosController extends Controller
 
         foreach ($request->items as $i2){
             $item2= Inventory::findOrFail($i2['id']);
-            $item2->sales=$item->sales-doubleval($i2['quan']);
+            $item2->amount=$item2->amount-doubleval($i2['quan']);
             $item2->save();
         }
 
@@ -74,7 +75,8 @@ class PosController extends Controller
                 "payment_type"=>$request->option,
                 "invoice_type"=>"عملية شراء",
                 "user_id"=>Auth::user()->id,
-                'invoice'=>$request->invoice
+                'invoice'=>$request->invoice,
+                "tax"=>$request->tax,
             ]);
 
             foreach ($request->items as $i){
@@ -86,7 +88,7 @@ class PosController extends Controller
 
             foreach ($request->items as $i2){
                 $item2= Inventory::findOrFail($i2['id']);
-                $item2->sales=$item->sales-doubleval($i2['quan']);
+                $item2->amount=$item2->amount-doubleval($i2['quan']);
                 $item2->save();
             }
 
@@ -97,7 +99,8 @@ class PosController extends Controller
                 "payment_type"=>"---",
                 "invoice_type"=>"مرتجع",
                 "user_id"=>Auth::user()->id,
-                'invoice'=>"-------"
+                'invoice'=>"-------",
+                'tax'=>0
             ]);
 
             session()->flash("add","تم اضافة المرتجع بنجاح");

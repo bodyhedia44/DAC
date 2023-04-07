@@ -83,21 +83,25 @@ footer {
 }
 footer .footer-container {
   padding: 32px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
-footer .footer-container .row > div,
-footer .footer-container .row > div > div {
+footer .footer-container > div,
+footer .footer-container > div > div {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   padding: 0px 12px;
 }
-footer .footer-container .row > div strong,
-footer .footer-container .row > div > div strong {
+footer .footer-container > div strong,
+footer .footer-container > div > div strong {
   font-size: 20px;
   font-weight: 800;
 }
-footer .footer-container .row > div a,
-footer .footer-container .row > div > div a {
+footer .footer-container > div a,
+footer .footer-container > div > div a {
   color: #cccccc;
   font-size: 16px;
   margin: 6px 0px;
@@ -105,8 +109,8 @@ footer .footer-container .row > div > div a {
   width: fit-content;
   transition: 0.1s all linear;
 }
-footer .footer-container .row > div a:hover,
-footer .footer-container .row > div > div a:hover {
+footer .footer-container > div a:hover,
+footer .footer-container > div > div a:hover {
   color: var(--fourth-color);
 }
 footer img.logo {
@@ -138,6 +142,18 @@ header nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+}
+header .hamburger-button {
+  display: none;
+  background: var(--primary-color);
+  min-width: 80px;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 28px;
 }
 header .navbar-container {
   gap: 22px;
@@ -149,7 +165,14 @@ header .logo img {
   width: 90px;
 }
 header ul {
-  gap: 16px;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transition: 0.1s all ease-in-out;
 }
 header ul li a {
   font-size: 22px;
@@ -157,7 +180,7 @@ header ul li a {
   color: var(--disabled-color);
   transition: 0.1s all ease-in-out;
 }
-header ul li a:hover {
+header ul li a:hover, header ul li a:focus {
   color: var(--fourth-color);
 }
 
@@ -179,15 +202,20 @@ section.banner .layer {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 50px;
 }
 section.banner .layer .image {
   display: flex;
   align-items: flex-end;
+  max-width: 50%;
   height: 100%;
 }
 section.banner .layer .image img {
   width: 400px;
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 section.banner .layer .section-title {
   width: 550px;
@@ -199,6 +227,7 @@ section.banner .layer .section-title {
 }
 section.banner .layer .section-title p {
   font-size: 20px;
+  min-width: 50%;
 }
 section.banner .layer .section-title::after {
   display: none;
@@ -207,6 +236,7 @@ section.try {
   width: 100%;
   height: 25vh;
   background: #3c5181;
+  text-align: center;
 }
 section.try .layer {
   max-width: 900px;
@@ -270,6 +300,7 @@ section.try .layer h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 28px;
 }
 .services-container .service {
@@ -381,10 +412,10 @@ a.btn:focus {
   height: 165px;
   padding: 10px 2px;
   margin: 2px 0px;
-  background: #5d677c;
+  background: #f0f0f0;
   color: #eee;
   box-shadow: 2px 2px 6px rgba(51, 56, 68, 0.6);
-  border-radius: 0px;
+  border-radius: 20px;
   border: 1px solid #5d677c;
   display: flex;
   justify-content: center;
@@ -407,15 +438,15 @@ a.btn:focus {
 .items .item:hover, .items .item:focus,
 .items .cancel:hover,
 .items .cancel:focus {
-  background: #eee;
-  color: #5d677c;
+  background: white;
+  color: white;
 }
 .items .cancel {
   background: #eee;
   color: #666;
 }
 .items .cancel:hover, .items .cancel:focus {
-  background: #5d677c;
+  background: yellow;
   color: #eee;
 }
 
@@ -462,7 +493,6 @@ table.casher-table thead th {
 .price-container form > .col-12,
 .products-container form > .col-12 {
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
 }
 .price-container form > .col-12 span,
@@ -506,9 +536,6 @@ table.casher-table thead th {
 }
 
 @media (max-width: 1440px) {
-  section.banner .layer .image img {
-    width: 300px;
-  }
   footer {
     padding: 30px 10px;
   }
@@ -517,7 +544,108 @@ table.casher-table thead th {
   }
 }
 @media (max-width: 800px) {
+  header {
+    height: unset;
+    padding: 6px;
+  }
+  header .hamburger-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  header nav {
+    width: 100%;
+  }
+  header nav .navbar-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+  header nav ul {
+    opacity: 0;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    gap: 28px;
+    position: absolute;
+    width: 100%;
+    background: var(--primary-color);
+    top: 100px;
+    border-radius: 6px;
+  }
+  header nav ul li a {
+    font-size: 24px;
+    color: #fff;
+  }
+  header nav ul li a:hover {
+    color: #bd7e09;
+  }
+  section.banner .layer .image img {
+    width: 230px;
+  }
+  section.banner .layer .section-title {
+    width: 350px;
+  }
   section.banner .layer .section-title p {
     font-size: 16px;
+  }
+  .services-container .service i {
+    font-size: 48px;
+  }
+  .services-container .service h2 {
+    font-size: 22px;
+  }
+  .offers-container {
+    padding: 0px 15px;
+  }
+  footer {
+    padding: 30px 2px;
+  }
+  footer .footer-container {
+    padding: 0;
+    justify-content: space-between;
+    gap: 30px 0;
+  }
+  footer .footer-container > div,
+  footer .footer-container > div > div {
+    align-items: center;
+  }
+}
+@media (max-width: 600px) {
+  section.banner .layer {
+    gap: 0;
+  }
+  section.banner .layer .section-title {
+    width: 550px;
+  }
+  section.banner .layer .section-title p {
+    font-size: 16px;
+  }
+  section.banner .layer .section-title h2 {
+    font-size: 28px;
+  }
+  section.try {
+    height: 35vh;
+  }
+  .services-container .service {
+    width: 150px;
+    height: 150px;
+  }
+}
+@media (max-width: 400px) {
+  .offers-container {
+    padding: 0;
+  }
+  .offers-container .offer p {
+    font-size: 14px;
+  }
+  .services-container {
+    padding: 8px 0;
+  }
+  .services-container .service {
+    width: 120px;
+    height: 130px;
+  }
+  .services-container .service i {
+    font-size: 36px;
   }
 }/*# sourceMappingURL=app.css.map */

@@ -34,7 +34,12 @@
                     <input type="text" class="form-control" placeholder="ادخل عنوان المنتج" id="price" name="location" value="{{$data->location}}">
                 </div>
             </div><!--end col-->
-
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">الرقم الضريبي</label>
+                    <input type="text" class="form-control" placeholder="ادخل الرقم الضريبي" id="tax_num" name="tax_num" value="{{$data->tax_number}}">
+                </div>
+            </div>
             <div class="col-6">
                 <div class="mb-3">
                     <label for="code" class="form-label">الضريبة (اختياري)</label>

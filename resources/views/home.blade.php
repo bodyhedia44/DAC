@@ -27,7 +27,7 @@
                                 <a href="/">الرئيسية</a>
                             </li>
                             <li>
-                                <a href="https://wa.me/966594300266">تواصل معنا</a>
+                                <a href="https://wa.me/966594300266" style="color:black">تواصل معنا</a>
                             </li>
                             <li>
                                 <a href="#about">من نحن</a>
@@ -39,6 +39,9 @@
                                 <a href="#0">مساعدة</a>
                             </li>
                         </ul>
+                        <button class="hamburger-button">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
                     </div>
                 </nav>
             </header>
@@ -258,42 +261,41 @@
 
 
         <footer class="page-footer">
-            <div class="container footer-container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img class="logo" src="{{ URL::asset('assets/logo.png') }}" alt="Logo">
-                        <div class="">
-                            <a href="#0">سياسة استرداد الأموال</a>
+            <div class="container-lg footer-container">
+                <div class="col-md-3 col-12">
+                    <img class="logo" src="{{ URL::asset('assets/logo.png') }}" alt="Logo">
+                    <div class="">
+                        <a href="#0">سياسة استرداد الأموال</a>
 
-                            <a href="#0">الشروط والأحكام</a>
+                        <a href="#0">الشروط والأحكام</a>
 
-                            <a href="#0">سياسة الخصوصية</a>
-                        </div>
+                        <a href="#0">سياسة الخصوصية</a>
                     </div>
-                    <div class="col-md-3">
-                        <strong>المنتجات:</strong>
+                </div>
+                <div class="col-md-3 col-4">
+                    <strong>المنتجات:</strong>
 
-                        <a href="#0">تواصل معنا</a>
+                    <a href="#0">تواصل معنا</a>
 
-                        <a href="#0">منصة it-duc</a>
-                    </div>
-                    <div class="col">
-                        <strong>المصادر:</strong>
+                    <a href="#0">منصة it-duc</a>
+                </div>
+                <div class="col-md-3 col-4">
+                    <strong>المصادر:</strong>
 
-                        <a href="#0">مساعدة</a>
-                    </div>
-                    <div class="col">
-                        <strong>الشركة:</strong>
+                    <a href="#0">مساعدة</a>
+                </div>
+                <div class="col-md-3 col-4">
+                    <strong>الشركة:</strong>
 
-                        <a href="#0">من نحن</a>
-                        <a href="#0">فريق العمل</a>
-                        <a href="#0">الوظائف</a>
+                    <a href="#0">من نحن</a>
+                    <a href="#0">فريق العمل</a>
+                    <a href="#0">الوظائف</a>
 
-                    </div>
                 </div>
             </div>
         </footer>
     </div>
 </body>
+<script src="{{ URL::asset('assets/css/styles/script.js') }}"></script>
 
 </html>

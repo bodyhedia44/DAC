@@ -49,13 +49,14 @@ class SettingController extends Controller
 
            $data->name=$request->name;
            $data->location=  $request->location;
-           $data->tax=  $request->tax;
+        $data->tax_number=  $request->tax_num;
+        $data->tax=  $request->tax;
            $data->img= $path;
 
            $data->save();
 
 
-        session()->flash("add","تم اضافة المنتج بنجاح");
+        session()->flash("add","تم التعديل بنجاح");
         return redirect("/settings");
     }
 

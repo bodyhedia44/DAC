@@ -76,7 +76,7 @@ class ProductController extends Controller
         Inventory::create([
             "id"=>$p->id,
             "name"=>$request->name,
-            "amount"=>$request->amount
+            "amount"=>$request->amount ==null ? 0:$request->amount
         ]);
 
         session()->flash("add","تم اضافة المنتج بنجاح");
@@ -117,13 +117,14 @@ class ProductController extends Controller
             ]
         )->validate();
 
+
+        $c= Product::find($request->id);
+
         if ($request->hasFile('img')){
             $path = $request->file('img')->store('products','public');
         }else{
-            $path="";
+            $path=$c->path;
         }
-
-        $c= Product::find($request->id);
         $c->name=$request->name;
         $c->price=$request->price;
         $c->category_id=$request->category;

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->uuid()->unique();
             $table->double("money");
+            $table->double("tax");
             $table->string("payment_type")->nullable();
             $table->string("invoice_type");
             $table->longText("invoice");

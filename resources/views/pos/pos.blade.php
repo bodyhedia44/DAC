@@ -9,6 +9,7 @@
         <form action="{{route('pos.store')}}" method="post" id="form">
             {{csrf_field()}}
             <input type="hidden" name="invoice" id="invoice_table">
+            <input type="hidden" name="tax" id="all_tax">
             <div class="page-container">
                 <div class="not-footer">
                     <header class="page-header" id="bla">
@@ -200,15 +201,14 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="myModalLabel">الفاتورة</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                        <button type="button" style="background-color: white;color: black !important;" data-bs-dismiss="modal" aria-label="Close">x </button>
                     </div>
                     <div class="container">
                         <form action="{{route('invoice')}}" method="post" id="print_form">
                             {{csrf_field()}}
-<div id="blaHAbl">
-
-</div>
+                                    <div id="blaHAbl"></div>
                             <input type="hidden" name="total" id="total_print">
+                            <input type="hidden" name="tax" id="total_tax">
                             <div class="card">
                             <div class="card-header">
                                 <strong>{{\Carbon\Carbon::now()}}</strong>
@@ -277,10 +277,28 @@
 {{--                                            </tr>--}}
                                             <tr>
                                                 <td class="left">
-                                                    <strong>Total</strong>
+                                                    <strong>المجموع</strong>
                                                 </td>
                                                 <td class="right">
                                                     <strong id="invoice_total"></strong>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="left">
+                                                    <strong>الضريبة</strong>
+                                                </td>
+                                                <td class="right">
+                                                    <strong id="invoice_tax"></strong>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="left">
+                                                    <strong>الاجمالي</strong>
+                                                </td>
+                                                <td class="right">
+                                                    <strong id="invoice_sum"></strong>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -290,7 +308,7 @@
                                 </div>
 
                             </div>
-                            <button>print</button>
+                            <button style="background-color: white;color: black !important;">print</button>
                         </div>
                         </form>
                     </div>
@@ -312,6 +330,7 @@
             const invoice = document.getElementById("invoice")
             const quan = document.getElementById("quan")
             const invoice_h = document.getElementById("invoice_table")
+            const invoice_tt = document.getElementById("all_tax")
             const invoice_pp = document.getElementById("blaHAbl")
 
             fillTable(table,name,price,quan)
@@ -326,12 +345,20 @@
             const tax =document.getElementById("tax")
             const sale =document.getElementById("sale")
             const invoice_t =document.getElementById("invoice_total")
+            const invoice_tax =document.getElementById("invoice_tax")
+            const invoice_sum =document.getElementById("invoice_sum")
             const invoice_p =document.getElementById("total_print")
+            const invoice_tax_print =document.getElementById("total_tax")
 
             t.value = total;
             n.value = total+(tax.value * total / 100) - (sale.value * total / 100)
             invoice_p.value = n.value;
-            invoice_t.innerHTML =  n.value +"$";
+            invoice_tax_print.value=total+(tax.value * total / 100)-total
+            invoice_tt.value=total+(tax.value * total / 100)-total;
+
+            invoice_t.innerHTML = total + "$";
+            invoice_tax.innerHTML = total+(tax.value * total / 100)-total + "$";
+            invoice_sum.innerHTML =  n.value +"$";
 
             const form_print =document.getElementById("print_form");
             form_print.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`

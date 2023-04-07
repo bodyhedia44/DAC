@@ -56,7 +56,7 @@ class ReportsController extends Controller
 
 
     function salesReport(){
-        $data=Invoice::all();
+        $data=Invoice::orderBy('created_at','desc')->get();
         return view("reports.sales_report",compact("data"));
     }
 }
