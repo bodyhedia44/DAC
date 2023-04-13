@@ -118,6 +118,8 @@
 </head>
 
 <body style="direction: rtl">
+<script src="https://bundle.run/buffer"></script>
+
 <div id="prinatble">
 <div class="card-header">
     <strong>{{$invoice->created_at}}</strong>
@@ -152,7 +154,7 @@
                     <strong> المجموع بدون الضريبة</strong>
                 </td>
                 <td class="right">
-                    <strong id="invoice_total">${{$invoice->money - $invoice->tax}}</strong>
+                    <strong id="invoice_total">{{$invoice->money - $invoice->tax}} sar</strong>
                 </td>
             </tr>
 
@@ -161,7 +163,7 @@
                     <strong>الضريبة</strong>
                 </td>
                 <td class="right">
-                    <strong id="invoice_total">${{$invoice->tax}}</strong>
+                    <strong id="invoice_total">{{$invoice->tax}} sar</strong>
                 </td>
             </tr>
 
@@ -170,13 +172,14 @@
                     <strong>المجموع بدون الضريبة</strong>
                 </td>
                 <td class="right">
-                    <strong id="invoice_total">${{$invoice->money}}</strong>
+                 <strong id="invoice_total">{{$invoice->money}} sar</strong>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
     <div id="qrcode" class="d-flex justify-content-center"></div>
+    <div id="result"></div>
 </div>
 
     </div>
@@ -188,8 +191,37 @@
 </body>
 <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
 <script type="text/javascript">
+
+    const sellerName = 'hedia';
+    const registerName = '{{$s->tax_number}}';
+    const time = '{{$invoice->created_at}}';
+    const total = '{{$invoice->money}}';
+    const totalVAT = '{{$invoice->tax}}';
+    function toHex(str) {
+        var result = '';
+        for (var i=0; i<str.length; i++) {
+            result += str.charCodeAt(i).toString(16);
+        }
+        return result;
+    }
+    function toDigits(str){
+        return str.length ===2 ? str :"0"+str
+    }
+
+    function hexToBase64(hexstring) {
+        return btoa(hexstring.match(/\w{2}/g).map(function(a) {
+            return String.fromCharCode(parseInt(a, 16));
+        }).join(""));
+    }
+
+
+    const data = `01${toDigits((sellerName.length).toString(16))+toHex(sellerName)}02${toDigits((registerName.length).toString(16))+toHex(registerName)}03${toDigits((time.length).toString(16))+toHex(time)}04${(toDigits(total.length)+toHex(total))}05${toDigits((totalVAT.length))+toHex(totalVAT)}`;
+    console.log(data)
+
+
     const qrcode = new QRCode(document.getElementById('qrcode'), {
-        text: window.location.href,
+        text: hexToBase64(data),
+        // text: window.location.href,
         width: 128,
         height: 128,
         colorDark : '#000',
@@ -204,87 +236,8 @@
         window.print();
         document.body.innerHTML = originalContents;
     }
+
+
 </script>
 </html>
-{{--<div class="invoice-box">--}}
-{{--    <table>--}}
-{{--        <tr class="top">--}}
-{{--            <td colspan="2">--}}
-{{--                <table>--}}
-{{--                    <tr>--}}
-{{--                        <td class="title">--}}
-{{--                            <img src="{{asset('storage/'.$s->img)}}" alt="" style="width: 100%; max-width: 200px" />--}}
-{{--                        </td>--}}
 
-{{--                        <td>--}}
-{{--                            Invoice #:{{$invoice->id}}<br />--}}
-{{--                            Created:{{\Carbon\Carbon::now()}}<br />--}}
-{{--                        </td>--}}
-{{--                    </tr>--}}
-{{--                </table>--}}
-{{--            </td>--}}
-{{--            <td></td>--}}
-{{--        </tr>--}}
-
-{{--        <tr class="information">--}}
-{{--            <td colspan="2">--}}
-{{--                <table>--}}
-{{--                    <tr>--}}
-{{--                        <td>--}}
-{{--                            Name: {{$s->name}}<br />--}}
-{{--                            Location: {{$s->location}}<br />--}}
-{{--                        </td>--}}
-
-{{--                    </tr>--}}
-{{--                </table>--}}
-{{--            </td>--}}
-{{--            <td></td>--}}
-
-{{--        </tr>--}}
-
-{{--        --}}{{--        <tr class="heading">--}}
-{{--        --}}{{--            <td>Payment Method</td>--}}
-
-{{--        --}}{{--            <td>Check #</td>--}}
-{{--        --}}{{--        </tr>--}}
-
-{{--        --}}{{--        <tr class="details">--}}
-{{--        --}}{{--            <td>Check</td>--}}
-
-{{--        --}}{{--            <td>1000</td>--}}
-{{--        --}}{{--        </tr>--}}
-
-{{--        --}}{{-- {{$t}}--}}
-{{--        --}}{{--        <tr class="heading">--}}
-{{--        --}}{{--            <td>الاسم</td>--}}
-{{--        --}}{{--            <td>الكمية</td>--}}
-
-{{--        --}}{{--            <td>السعر</td>--}}
-{{--        --}}{{--        </tr>--}}
-
-{{--        --}}{{--        <tr class="item">--}}
-{{--        --}}{{--            <td>Website design</td>--}}
-{{--        --}}{{--            <td>5</td>--}}
-
-{{--        --}}{{--            <td>$300.00</td>--}}
-{{--        --}}{{--        </tr>--}}
-
-{{--        --}}{{--        <tr class="item">--}}
-{{--        --}}{{--            <td>Hosting (3 months)</td>--}}
-{{--        --}}{{--            <td>2</td>--}}
-{{--        --}}{{--            <td>$75.00</td>--}}
-{{--        --}}{{--        </tr>--}}
-
-{{--        --}}{{--        <tr class="item">--}}
-{{--        --}}{{--            <td>Domain name (1 year)</td>--}}
-{{--        --}}{{--            <td>4</td>--}}
-{{--        --}}{{--            <td>$10.00</td>--}}
-{{--        --}}{{--        </tr>--}}
-
-{{--        <tr class="total">--}}
-{{--            <td></td>--}}
-
-{{--            <td>Total: $385.00</td>--}}
-{{--        </tr>--}}
-{{--    </table>--}}
-{{--</div>--}}

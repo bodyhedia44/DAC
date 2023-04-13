@@ -169,7 +169,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-4 toolbar-container">
+                            <div class="col-4 toolbar-container mt-3">
                                 <div class="row-cols-4 buttons-container">
                                     <button>
                                         <i class="fa-solid fa-money-bill-1-wave"></i>
@@ -356,9 +356,9 @@
             invoice_tax_print.value=total+(tax.value * total / 100)-total
             invoice_tt.value=total+(tax.value * total / 100)-total;
 
-            invoice_t.innerHTML = total + "$";
-            invoice_tax.innerHTML = total+(tax.value * total / 100)-total + "$";
-            invoice_sum.innerHTML =  n.value +"$";
+            invoice_t.innerHTML = total ;
+            invoice_tax.innerHTML = total+(tax.value * total / 100)-total ;
+            invoice_sum.innerHTML =  n.value ;
 
             const form_print =document.getElementById("print_form");
             form_print.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
