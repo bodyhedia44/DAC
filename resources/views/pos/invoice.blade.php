@@ -5,115 +5,203 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Invoice</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
     <!-- Favicon -->
 {{--    <link rel="icon" href="./images/favicon.png" type="image/x-icon" />--}}
 
     <!-- Invoice styling -->
+{{--    <style>--}}
+{{--        body {--}}
+{{--            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;--}}
+{{--            text-align: center;--}}
+{{--            color: #777;--}}
+{{--        }--}}
+
+{{--        body h1 {--}}
+{{--            font-weight: 300;--}}
+{{--            margin-bottom: 0px;--}}
+{{--            padding-bottom: 0px;--}}
+{{--            color: #000;--}}
+{{--        }--}}
+
+{{--        body h3 {--}}
+{{--            font-weight: 300;--}}
+{{--            margin-top: 10px;--}}
+{{--            margin-bottom: 20px;--}}
+{{--            font-style: italic;--}}
+{{--            color: #555;--}}
+{{--        }--}}
+
+{{--        body a {--}}
+{{--            color: #06f;--}}
+{{--        }--}}
+
+{{--        .invoice-box {--}}
+{{--            max-width: 800px;--}}
+{{--            margin: auto;--}}
+{{--            padding: 30px;--}}
+{{--            border: 1px solid #eee;--}}
+{{--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);--}}
+{{--            font-size: 16px;--}}
+{{--            line-height: 24px;--}}
+{{--            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;--}}
+{{--            color: #555;--}}
+{{--        }--}}
+
+{{--        .invoice-box table {--}}
+{{--            width: 100%;--}}
+{{--            line-height: inherit;--}}
+{{--            text-align: left;--}}
+{{--            border-collapse: collapse;--}}
+{{--        }--}}
+
+{{--        .invoice-box table td {--}}
+{{--            padding: 5px;--}}
+{{--            vertical-align: top;--}}
+{{--        }--}}
+
+{{--        .invoice-box table tr td:nth-child(2) {--}}
+{{--            text-align: right;--}}
+{{--        }--}}
+
+{{--        .invoice-box table tr.top table td {--}}
+{{--            padding-bottom: 20px;--}}
+{{--        }--}}
+
+{{--        .invoice-box table tr.top table td.title {--}}
+{{--            font-size: 45px;--}}
+{{--            line-height: 45px;--}}
+{{--            color: #333;--}}
+{{--        }--}}
+
+{{--        .invoice-box table tr.information table td {--}}
+{{--            padding-bottom: 40px;--}}
+{{--        }--}}
+
+{{--        .invoice-box table tr.heading td {--}}
+{{--            background: #eee;--}}
+{{--            border-bottom: 1px solid #ddd;--}}
+{{--            font-weight: bold;--}}
+{{--        }--}}
+
+{{--        .invoice-box table tr.details td {--}}
+{{--            padding-bottom: 20px;--}}
+{{--        }--}}
+
+{{--        .invoice-box table tr.item td {--}}
+{{--            border-bottom: 1px solid #eee;--}}
+{{--        }--}}
+
+{{--        .invoice-box table tr.item.last td {--}}
+{{--            border-bottom: none;--}}
+{{--        }--}}
+
+{{--        .invoice-box table tr.total td:nth-child(2) {--}}
+{{--            border-top: 2px solid #eee;--}}
+{{--            font-weight: bold;--}}
+{{--        }--}}
+
+{{--        @media only screen and (max-width: 600px) {--}}
+{{--            .invoice-box table tr.top table td {--}}
+{{--                width: 100%;--}}
+{{--                display: block;--}}
+{{--                text-align: center;--}}
+{{--            }--}}
+
+{{--            .invoice-box table tr.information table td {--}}
+{{--                width: 100%;--}}
+{{--                display: block;--}}
+{{--                text-align: center;--}}
+{{--            }--}}
+{{--        }--}}
+{{--    </style>--}}
+
     <style>
-        body {
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-            text-align: center;
-            color: #777;
+        #invoice-POS {
+            box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+            padding: 2mm;
+            margin: 0 auto;
+            width: 44mm;
+            background: #FFF;
         }
-
-        body h1 {
+        #invoice-POS ::selection {
+            background: #f31544;
+            color: #FFF;
+        }
+        #invoice-POS ::moz-selection {
+            background: #f31544;
+            color: #FFF;
+        }
+        #invoice-POS h1 {
+            font-size: 1.5em;
+            color: #222;
+        }
+        #invoice-POS h2 {
+            font-size: 0.9em;
+        }
+        #invoice-POS h3 {
+            font-size: 1.2em;
             font-weight: 300;
-            margin-bottom: 0px;
-            padding-bottom: 0px;
-            color: #000;
+            line-height: 2em;
         }
-
-        body h3 {
-            font-weight: 300;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            font-style: italic;
-            color: #555;
+        #invoice-POS p {
+            font-size: 0.7em;
+            color: #666;
+            line-height: 1.2em;
         }
-
-        body a {
-            color: #06f;
+        #invoice-POS #top, #invoice-POS #mid, #invoice-POS #bot {
+            /* Targets all id with 'col-' */
+            border-bottom: 1px solid #EEE;
         }
-
-        .invoice-box {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
-            border: 1px solid #eee;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-            font-size: 16px;
-            line-height: 24px;
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-            color: #555;
+        #invoice-POS #top {
+            min-height: 100px;
         }
-
-        .invoice-box table {
-            width: 100%;
-            line-height: inherit;
-            text-align: left;
-            border-collapse: collapse;
+        #invoice-POS #mid {
+            min-height: 80px;
         }
-
-        .invoice-box table td {
-            padding: 5px;
-            vertical-align: top;
+        #invoice-POS #bot {
+            min-height: 50px;
         }
-
-        .invoice-box table tr td:nth-child(2) {
+        #invoice-POS #top .logo {
+            height: 60px;
+            width: 60px;
+            background: url(http://michaeltruong.ca/images/logo1.png) no-repeat;
+            background-size: 60px 60px;
+        }
+        #invoice-POS .info {
+            display: block;
+            margin-left: 0;
+        }
+        #invoice-POS .title {
+            float: right;
+        }
+        #invoice-POS .title p {
             text-align: right;
         }
-
-        .invoice-box table tr.top table td {
-            padding-bottom: 20px;
+        #invoice-POS table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #invoice-POS .tabletitle {
+            font-size: 0.5em;
+            background: #EEE;
+        }
+        /*#invoice-POS .service {*/
+        /*    border-bottom: 1px solid #EEE;*/
+        /*}*/
+        .tr:not(.tabletitle) {
+            border-bottom: 1px solid #EEE;
+        }
+        #invoice-POS .item {
+            width: 24mm;
+        }
+        #invoice-POS .itemtext {
+            font-size: 0.5em;
+        }
+        #invoice-POS #legalcopy {
+            margin-top: 5mm;
         }
 
-        .invoice-box table tr.top table td.title {
-            font-size: 45px;
-            line-height: 45px;
-            color: #333;
-        }
-
-        .invoice-box table tr.information table td {
-            padding-bottom: 40px;
-        }
-
-        .invoice-box table tr.heading td {
-            background: #eee;
-            border-bottom: 1px solid #ddd;
-            font-weight: bold;
-        }
-
-        .invoice-box table tr.details td {
-            padding-bottom: 20px;
-        }
-
-        .invoice-box table tr.item td {
-            border-bottom: 1px solid #eee;
-        }
-
-        .invoice-box table tr.item.last td {
-            border-bottom: none;
-        }
-
-        .invoice-box table tr.total td:nth-child(2) {
-            border-top: 2px solid #eee;
-            font-weight: bold;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-
-            .invoice-box table tr.information table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-        }
     </style>
 </head>
 
@@ -121,66 +209,153 @@
 <script src="https://bundle.run/buffer"></script>
 
 <div id="prinatble">
-<div class="card-header">
-    <strong>{{$invoice->created_at}}</strong>
+    <div id="invoice-POS">
 
-</div>
-<div class="card-body" id="pp">
-    <div class="row mb-4">
-        <div class="col-sm-6 center">
-            <div>
-                الموظف:  <strong>{{$invoice->user->name}}</strong>
+        <center id="top">
+            <div class="logo"></div>
+            <div class="info">
+                <h2>{{$s->name}}</h2>
+            </div><!--End Info-->
+        </center><!--End InvoiceTop-->
+
+        <div id="mid">
+            <div class="info">
+                <p>
+                    العنوان : {{$s->location}}</br>
+                    الرقم الضريبي : {{$s->tax_number}}</br>
+                    الموظف : {{$invoice->user->name}}</br>
+                    التاريخ : {{$invoice->created_at}}</br>
+{{--                    Email   : JohnDoe@gmail.com</br>--}}
+{{--                    Phone   : 555-555-5555</br>--}}
+                </p>
             </div>
-            <div>الجهة: {{$s->name}}</div>
-            <div>المكان: {{$s->location}}</div>
-            <div>الرقم الضريبي: {{$s->tax_number}}</div>
-        </div>
+        </div><!--End Invoice Mid-->
+
+        <div id="bot">
+
+            <div id="table">
+                <table>
+                    <tr class="tabletitle">
+                        <td class="item"><h2>العنصر</h2></td>
+                        <td class="Hours"><h2>الكمية</h2></td>
+                        <td class="Rate"><h2>المجموع</h2></td>
+                    </tr>
 
 
 
-    </div>
+                    <tr>
+                        <td><p class="itemtext">Communication</p></td>
+                        <td class="tableitem"><p class="itemtext">5</p></td>
+                        <td class="tableitem"><p class="itemtext">$375.00</p></td>
+                    </tr>
 
-    <div class="table-responsive-sm">
-        <table class="table table-striped" id="invoice">
-           {!! $invoice->invoice !!}
-            </table>
-        </div>
+                    <tr>
+                        <td class="tableitem"><p class="itemtext">Asset Gathering</p></td>
+                        <td class="tableitem"><p class="itemtext">3</p></td>
+                        <td class="tableitem"><p class="itemtext">$225.00</p></td>
+                    </tr>
 
-    <div class="col-lg-4 col-sm-5 ml-auto" id="p">
-        <table class="table table-clear">
-            <tbody>
-            <tr>
-                <td class="left">
-                    <strong> المجموع بدون الضريبة</strong>
-                </td>
-                <td class="right">
-                    <strong id="invoice_total">{{$invoice->money - $invoice->tax}} sar</strong>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="tableitem"><p class="itemtext">Design Development</p></td>
+                        <td class="tableitem"><p class="itemtext">5</p></td>
+                        <td class="tableitem"><p class="itemtext">$375.00</p></td>
+                    </tr>
 
-            <tr>
-                <td class="left">
-                    <strong>الضريبة</strong>
-                </td>
-                <td class="right">
-                    <strong id="invoice_total">{{$invoice->tax}} sar</strong>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="tableitem"><p class="itemtext">Animation</p></td>
+                        <td class="tableitem"><p class="itemtext">20</p></td>
+                        <td class="tableitem"><p class="itemtext">$1500.00</p></td>
+                    </tr>
 
-            <tr>
-                <td class="left">
-                    <strong>المجموع بدون الضريبة</strong>
-                </td>
-                <td class="right">
-                 <strong id="invoice_total">{{$invoice->money}} sar</strong>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div id="qrcode" class="d-flex justify-content-center"></div>
-    <div id="result"></div>
-</div>
+                    <tr>
+                        <td class="tableitem"><p class="itemtext">Animation Revisions</p></td>
+                        <td class="tableitem"><p class="itemtext">10</p></td>
+                        <td class="tableitem"><p class="itemtext">$750.00</p></td>
+                    </tr>
+
+
+                    <tr class="tabletitle">
+                        <td></td>
+                        <td class="Rate"><h2>الضريبة</h2></td>
+                        <td class="payment"><h2>SAR 419.25</h2></td>
+                    </tr>
+
+                    <tr class="tabletitle">
+                        <td></td>
+                        <td class="Rate"><h2>الاجمالي</h2></td>
+                        <td class="payment"><h2>SAR 3,644.25</h2></td>
+                    </tr>
+
+                </table>
+            </div><!--End Table-->
+
+            <div id="legalcopy">
+                <center id="qrcode" class="d-flex justify-content-center"></center>
+            </div>
+
+        </div><!--End InvoiceBot-->
+    </div><!--End Invoice-->
+
+    {{--<div class="card-header">--}}
+{{--    <strong>{{$invoice->created_at}}</strong>--}}
+
+{{--</div>--}}
+{{--<div class="card-body" id="pp">--}}
+{{--    <div class="row mb-4">--}}
+{{--        <div class="col-sm-6 center">--}}
+{{--            <div>--}}
+{{--                الموظف:  <strong>{{$invoice->user->name}}</strong>--}}
+{{--            </div>--}}
+{{--            <div>الجهة: {{$s->name}}</div>--}}
+{{--            <div>المكان: {{$s->location}}</div>--}}
+{{--            <div>الرقم الضريبي: {{$s->tax_number}}</div>--}}
+{{--        </div>--}}
+
+
+
+{{--    </div>--}}
+
+{{--    <div class="table-responsive-sm">--}}
+{{--        <table class="table table-striped" id="invoice">--}}
+{{--           {!! $invoice->invoice !!}--}}
+{{--            </table>--}}
+{{--        </div>--}}
+
+{{--    <div class="col-lg-4 col-sm-5 ml-auto" id="p">--}}
+{{--        <table class="table table-clear">--}}
+{{--            <tbody>--}}
+{{--            <tr>--}}
+{{--                <td class="left">--}}
+{{--                    <strong> المجموع بدون الضريبة</strong>--}}
+{{--                </td>--}}
+{{--                <td class="right">--}}
+{{--                    <strong id="invoice_total">{{$invoice->money - $invoice->tax}} sar</strong>--}}
+{{--                </td>--}}
+{{--            </tr>--}}
+
+{{--            <tr>--}}
+{{--                <td class="left">--}}
+{{--                    <strong>الضريبة</strong>--}}
+{{--                </td>--}}
+{{--                <td class="right">--}}
+{{--                    <strong id="invoice_total">{{$invoice->tax}} sar</strong>--}}
+{{--                </td>--}}
+{{--            </tr>--}}
+
+{{--            <tr>--}}
+{{--                <td class="left">--}}
+{{--                    <strong>المجموع بدون الضريبة</strong>--}}
+{{--                </td>--}}
+{{--                <td class="right">--}}
+{{--                 <strong id="invoice_total">{{$invoice->money}} sar</strong>--}}
+{{--                </td>--}}
+{{--            </tr>--}}
+{{--            </tbody>--}}
+{{--        </table>--}}
+{{--    </div>--}}
+{{--    <div id="qrcode" class="d-flex justify-content-center"></div>--}}
+{{--    <div id="result"></div>--}}
+{{--</div>--}}
 
     </div>
 
