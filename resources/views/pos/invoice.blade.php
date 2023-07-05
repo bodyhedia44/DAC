@@ -162,12 +162,12 @@
         #invoice-POS #bot {
             min-height: 50px;
         }
-        #invoice-POS #top .logo {
-            height: 60px;
-            width: 60px;
-            background: url(http://michaeltruong.ca/images/logo1.png) no-repeat;
-            background-size: 60px 60px;
-        }
+        /*#invoice-POS #top .logo {*/
+        /*    height: 60px;*/
+        /*    width: 60px;*/
+        /*    background: url(http://michaeltruong.ca/images/logo1.png) no-repeat;*/
+        /*    background-size: 60px 60px;*/
+        /*}*/
         #invoice-POS .info {
             display: block;
             margin-left: 0;
@@ -212,7 +212,13 @@
     <div id="invoice-POS">
 
         <center id="top">
-            <div class="logo"></div>
+            <div class="logo">
+                @if($s->img == null)
+                    <img src="http://michaeltruong.ca/images/logo1.png" height="60" width="60">
+                @else
+                    <img src="{{asset('storage/'.$s->img)}}" height="60" width="60">
+                @endif
+            </div>
             <div class="info">
                 <h2>{{$s->name}}</h2>
             </div><!--End Info-->
@@ -235,57 +241,8 @@
 
             <div id="table">
                 <table>
-                    <tr class="tabletitle">
-                        <td class="item"><h2>العنصر</h2></td>
-                        <td class="Hours"><h2>الكمية</h2></td>
-                        <td class="Rate"><h2>المجموع</h2></td>
-                    </tr>
 
-
-
-                    <tr>
-                        <td><p class="itemtext">Communication</p></td>
-                        <td class="tableitem"><p class="itemtext">5</p></td>
-                        <td class="tableitem"><p class="itemtext">$375.00</p></td>
-                    </tr>
-
-                    <tr>
-                        <td class="tableitem"><p class="itemtext">Asset Gathering</p></td>
-                        <td class="tableitem"><p class="itemtext">3</p></td>
-                        <td class="tableitem"><p class="itemtext">$225.00</p></td>
-                    </tr>
-
-                    <tr>
-                        <td class="tableitem"><p class="itemtext">Design Development</p></td>
-                        <td class="tableitem"><p class="itemtext">5</p></td>
-                        <td class="tableitem"><p class="itemtext">$375.00</p></td>
-                    </tr>
-
-                    <tr>
-                        <td class="tableitem"><p class="itemtext">Animation</p></td>
-                        <td class="tableitem"><p class="itemtext">20</p></td>
-                        <td class="tableitem"><p class="itemtext">$1500.00</p></td>
-                    </tr>
-
-                    <tr>
-                        <td class="tableitem"><p class="itemtext">Animation Revisions</p></td>
-                        <td class="tableitem"><p class="itemtext">10</p></td>
-                        <td class="tableitem"><p class="itemtext">$750.00</p></td>
-                    </tr>
-
-
-                    <tr class="tabletitle">
-                        <td></td>
-                        <td class="Rate"><h2>الضريبة</h2></td>
-                        <td class="payment"><h2>SAR 419.25</h2></td>
-                    </tr>
-
-                    <tr class="tabletitle">
-                        <td></td>
-                        <td class="Rate"><h2>الاجمالي</h2></td>
-                        <td class="payment"><h2>SAR 3,644.25</h2></td>
-                    </tr>
-
+                    {!!  $invoice->invoice !!}
                 </table>
             </div><!--End Table-->
 
@@ -295,68 +252,6 @@
 
         </div><!--End InvoiceBot-->
     </div><!--End Invoice-->
-
-    {{--<div class="card-header">--}}
-{{--    <strong>{{$invoice->created_at}}</strong>--}}
-
-{{--</div>--}}
-{{--<div class="card-body" id="pp">--}}
-{{--    <div class="row mb-4">--}}
-{{--        <div class="col-sm-6 center">--}}
-{{--            <div>--}}
-{{--                الموظف:  <strong>{{$invoice->user->name}}</strong>--}}
-{{--            </div>--}}
-{{--            <div>الجهة: {{$s->name}}</div>--}}
-{{--            <div>المكان: {{$s->location}}</div>--}}
-{{--            <div>الرقم الضريبي: {{$s->tax_number}}</div>--}}
-{{--        </div>--}}
-
-
-
-{{--    </div>--}}
-
-{{--    <div class="table-responsive-sm">--}}
-{{--        <table class="table table-striped" id="invoice">--}}
-{{--           {!! $invoice->invoice !!}--}}
-{{--            </table>--}}
-{{--        </div>--}}
-
-{{--    <div class="col-lg-4 col-sm-5 ml-auto" id="p">--}}
-{{--        <table class="table table-clear">--}}
-{{--            <tbody>--}}
-{{--            <tr>--}}
-{{--                <td class="left">--}}
-{{--                    <strong> المجموع بدون الضريبة</strong>--}}
-{{--                </td>--}}
-{{--                <td class="right">--}}
-{{--                    <strong id="invoice_total">{{$invoice->money - $invoice->tax}} sar</strong>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-
-{{--            <tr>--}}
-{{--                <td class="left">--}}
-{{--                    <strong>الضريبة</strong>--}}
-{{--                </td>--}}
-{{--                <td class="right">--}}
-{{--                    <strong id="invoice_total">{{$invoice->tax}} sar</strong>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-
-{{--            <tr>--}}
-{{--                <td class="left">--}}
-{{--                    <strong>المجموع بدون الضريبة</strong>--}}
-{{--                </td>--}}
-{{--                <td class="right">--}}
-{{--                 <strong id="invoice_total">{{$invoice->money}} sar</strong>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-{{--            </tbody>--}}
-{{--        </table>--}}
-{{--    </div>--}}
-{{--    <div id="qrcode" class="d-flex justify-content-center"></div>--}}
-{{--    <div id="result"></div>--}}
-{{--</div>--}}
-
     </div>
 
 </div>

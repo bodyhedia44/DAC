@@ -31,7 +31,6 @@
                                 <table class="casher-table" id="table">
                                     <thead>
                                         <tr>
-                                            <th></th>
                                             <th>item</th>
                                             <th>QTY</th>
                                             <th>price</th>
@@ -94,7 +93,7 @@
                                         <input type="number" id="quan" value="1" min="1" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 mt-3">
                                     <span>
                                         المجموع
                                     </span>
@@ -103,7 +102,7 @@
                                         <input type="number" name="total" id="total" required readonly class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 mt-3">
                                     <span>
                                         الضريبة
                                     </span>
@@ -112,7 +111,7 @@
                                         <input type="number" id="tax" readonly class="form-control" value="{{$s->tax}}">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 mt-3">
                                     <span>
                                         الاجمالي
                                     </span>
@@ -134,16 +133,16 @@
                                         <input type="number" id="sale" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-12" >
+                                <div class="col-12 mt-3" >
                                         <span>
                                                 المدفوع
                                             </span>
 
                                     <div class="text">
-                                        <input type="number" id="paid" onchange="paidChange()" required class="form-control">
+                                        <input type="number" id="paid" onchange="paidChange()" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 mt-3">
                                         <span>
                                                 الباقي
                                             </span>
@@ -152,7 +151,7 @@
                                         <input type="number" id="change" readonly class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 mt-3">
                                         <span>
                                                 طريقة الدفع
                                             </span>
@@ -230,25 +229,18 @@
                                 </div>
 
                                 <div class="table-responsive-sm">
-                                    <table class="table table-striped" id="invoice">
-                                        <thead>
-                                        <tr>
-                                            <th class="center">#</th>
-                                            <th>Item</th>
-                                            <th class="center">Qty</th>
-                                            <th class="right">Total</th>
+                                    <table class="table table-striped" >
+                                        <thead id="invoice">
+                                        <tr class="tabletitle">
+                                            <td class="item"><h2>العنصر</h2></td>
+                                            <td class="Hours"><h2>الكمية</h2></td>
+                                            <td class="Rate"><h2>المجموع</h2></td>
                                         </tr>
                                         </thead>
-                                        <tbody>
-{{--                                        <tr>--}}
-{{--                                            <td class="center">1</td>--}}
-{{--                                            <td class="left strong">Origin License</td>--}}
-{{--                                            <td class="center">1</td>--}}
-{{--                                            <td class="right">$999,00</td>--}}
-{{--                                        </tr>--}}
-                                        </tbody>
                                     </table>
                                 </div>
+
+
                                 <div class="row">
                                     <div class="col-lg-4 col-sm-5">
 
@@ -257,24 +249,7 @@
                                     <div class="col-lg-4 col-sm-5 ml-auto" id="p">
                                         <table class="table table-clear">
                                             <tbody>
-{{--                                            <tr>--}}
-{{--                                                <td class="left">--}}
-{{--                                                    <strong id="ivoice_total">Subtotal</strong>--}}
-{{--                                                </td>--}}
-{{--                                                <td class="right">$8.497,00</td>--}}
-{{--                                            </tr>--}}
-{{--                                            <tr>--}}
-{{--                                                <td class="left">--}}
-{{--                                                    <strong >Discount (20%)</strong>--}}
-{{--                                                </td>--}}
-{{--                                                <td class="right" id="ivoice_disc">$1,699,40</td>--}}
-{{--                                            </tr>--}}
-{{--                                            <tr>--}}
-{{--                                                <td class="left">--}}
-{{--                                                    <strong>VAT</strong>--}}
-{{--                                                </td>--}}
-{{--                                                <td class="right">$679,76</td>--}}
-{{--                                            </tr>--}}
+
                                             <tr>
                                                 <td class="left">
                                                     <strong>المجموع</strong>
@@ -334,9 +309,11 @@
             const invoice_pp = document.getElementById("blaHAbl")
 
             fillTable(table,name,price,quan)
-            fillTable(invoice,name,price,quan)
+            fillTable_invoice(invoice,name,price,quan)
 
-            invoice_pp.innerHTML=`<input type="hidden" name="invoice" value="${table.innerHTML}">`;
+            console.log(invoice.innerHTML)
+
+            invoice_pp.innerHTML=`<input type="hidden" name="invoice" value="${invoice.innerHTML.replace(/"/g, "'")}">`;
 
             total+=price*quan.value;
 
@@ -371,7 +348,7 @@
             quan.value=1;
 
 
-            invoice_h.value=table.innerHTML;
+            invoice_h.value=invoice.innerHTML.replace(/"/g, "'");
         }
         function fillTable(table,name,price,quan) {
             var row = table.insertRow(1);
@@ -379,13 +356,21 @@
             const cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(2);
 
-            cell1.innerHTML = "";
-            cell2.innerHTML = name;
-            cell3.innerHTML = price * quan.value;
-            cell4.innerHTML = quan.value;
+            cell1.innerHTML = name;
+            cell2.innerHTML =  price * quan.value;
+            cell3.innerHTML =quan.value;
 
+        }
+
+        function fillTable_invoice(table,name,price,quan) {
+            console.log(table)
+            table.innerHTML+=` <tr>
+                        <td><p class='itemtext'>${name}</p></td>
+                        <td class='tableitem'><p class='itemtext'>${quan.value}</p></td>
+                        <td class='tableitem'><p class='itemtext'>${price}</p></td>
+                    </tr>
+`
         }
         function hide(){
             document.getElementById("toggle").style.display='none';
@@ -438,81 +423,6 @@
     </script>
 
 @endsection
-
-
-
-
-
-
-{{--                            <div class="col-8 toolbar-container">--}}
-{{--                                <div class="col-4 price-container">--}}
-{{--                                    <div class="col-12">--}}
-{{--                                        <span>--}}
-{{--                                                طريقة الدفع--}}
-{{--                                            </span>--}}
-{{--                                        <div class="text">--}}
-{{--                                            <select name="option" id="">--}}
-{{--                                                <option value="cash">--}}
-{{--                                                    cash--}}
-{{--                                                </option>--}}
-{{--                                                <option value="visa">--}}
-{{--                                                    visa--}}
-{{--                                                </option>--}}
-{{--                                            </select>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
-{{--                                    <div class="col-12">--}}
-{{--                                        <span>--}}
-{{--                                                المدفوع--}}
-{{--                                            </span>--}}
-
-{{--                                        <div class="text">--}}
-{{--                                            <input type="number" id="paid" onchange="change()" required>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-12">--}}
-{{--                                        <span>--}}
-{{--                                                الباقي--}}
-{{--                                            </span>--}}
-
-{{--                                        <div class="text">--}}
-{{--                                            <input type="number" id="change" readonly>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="col-8 buttons-container">--}}
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-floppy-disk"></i>--}}
-{{--                                        save--}}
-{{--                                    </button>--}}
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-money-bill-1-wave"></i>--}}
-{{--                                        pay--}}
-{{--                                    </button>--}}
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-trash"></i>--}}
-{{--                                        remove--}}
-{{--                                    </button>--}}
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-xmark"></i>--}}
-{{--                                        cancel--}}
-{{--                                    </button>--}}
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-ban"></i>--}}
-{{--                                        clear--}}
-{{--                                    </button>--}}
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-door-open"></i>--}}
-{{--                                        exit--}}
-{{--                                    </button>--}}
-{{--                                    <button>--}}
-{{--                                        <i class="fa-solid fa-print"></i>--}}
-{{--                                        print--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
 
 
 
