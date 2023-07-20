@@ -31,9 +31,9 @@
                                 <table class="casher-table" id="table">
                                     <thead>
                                         <tr>
-                                            <th>item</th>
-                                            <th>QTY</th>
-                                            <th>price</th>
+                                            <th>العنصر</th>
+                                            <th>الكمية</th>
+                                            <th>المجموع</th>
                                         </tr>
                                     </thead>
                                     <tbody>
