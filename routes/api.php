@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post("/login",[\App\Http\Controllers\ApiAuthController::class,'login']);
-
+Route::middleware(['auth:sanctum'])->group(function () {
+  Route::get('/items',[\App\Http\Controllers\POSAppController::class,'get_items']);
+});
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
