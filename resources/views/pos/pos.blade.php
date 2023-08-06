@@ -156,7 +156,7 @@
                                                 طريقة الدفع
                                             </span>
                                     <div class="text">
-                                        <select name="option" class="form-control-sm">
+                                        <select name="option" id="option" class="form-control-sm" onchange="cashOrVisa()">
                                             <option value="cash">
                                                 cash
                                             </option>
@@ -208,6 +208,7 @@
                                     <div id="blaHAbl"></div>
                             <input type="hidden" name="total" id="total_print">
                             <input type="hidden" name="tax" id="total_tax">
+                            <input type="hidden" name="i_option" id="i_option" value="cash">
                             <div class="card">
                             <div class="card-header">
                                 <strong>{{\Carbon\Carbon::now()}}</strong>
@@ -338,12 +339,26 @@
             invoice_sum.innerHTML =  n.value ;
 
             const form_print =document.getElementById("print_form");
-            form_print.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
-            form_print.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${quan.value}">`
-
             const form =document.getElementById("bla");
-            form.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
-            form.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${quan.value}">`
+            const firstElement = document.querySelector(`input[name="items[${name}][quan]]"`);
+            const elementsToDelete = document.querySelectorAll(`input[name="items[${name}][quan]]"`);
+            if (firstElement) {
+                let new_value=firstElement.value+quan.value
+                elementsToDelete.forEach((element) => {
+                    element.remove();
+                });
+                form_print.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${new_value}">`
+                form.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${new_value}">`
+
+            }else{
+                form_print.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
+                form_print.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${quan.value}">`
+
+                form.innerHTML+=`<input type="hidden" name="items[${name}][id]" value="${id}">`
+                form.innerHTML+=`<input type="hidden" name="items[${name}][quan]" value="${quan.value}">`
+            }
+
+
 
             quan.value=1;
 
@@ -418,6 +433,10 @@
                 let i=document.getElementById("change")
                 i.value=change
             }
+        }
+
+        function cashOrVisa() {
+            document.getElementById('i_option').value=document.getElementById('option').value
         }
 
     </script>

@@ -30,9 +30,10 @@ class PosController extends Controller
 
 
     public function invoice(Request $request){
+
         $invoice=Invoice::create([
             "money"=>$request->total,
-            "payment_type"=>"cash",
+            "payment_type"=>$request->i_option,
             "invoice_type"=>"عملية شراء",
             "user_id"=>Auth::user()->id,
             "tax"=>$request->tax,
@@ -43,11 +44,9 @@ class PosController extends Controller
             $item= Sale::findOrFail($i['id']);
             $item->sales=$item->sales+doubleval($i['quan']);
             $item->save();
-        }
 
-        foreach ($request->items as $i2){
-            $item2= Inventory::findOrFail($i2['id']);
-            $item2->amount=$item2->amount-doubleval($i2['quan']);
+            $item2= Inventory::findOrFail($i['id']);
+            $item2->amount=$item2->amount-doubleval($i['quan']);
             $item2->save();
         }
 
@@ -82,15 +81,12 @@ class PosController extends Controller
             foreach ($request->items as $i){
                $item= Sale::findOrFail($i['id']);
                $item->sales=$item->sales+doubleval($i['quan']);
-
                $item->save();
+               $item2= Inventory::findOrFail($i['id']);
+               $item2->amount=$item2->amount-doubleval($i['quan']);
+               $item2->save();
             }
 
-            foreach ($request->items as $i2){
-                $item2= Inventory::findOrFail($i2['id']);
-                $item2->amount=$item2->amount-doubleval($i2['quan']);
-                $item2->save();
-            }
 
             return redirect("/pos");
         }else{
