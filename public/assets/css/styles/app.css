@@ -146,11 +146,10 @@ header nav {
 }
 header .hamburger-button {
   display: none;
-  background: var(--primary-color);
   min-width: 80px;
   width: -moz-fit-content;
   width: fit-content;
-  color: #fff;
+  color: var(--primary-color);
   padding: 10px 16px;
   border-radius: 6px;
   font-size: 28px;
@@ -171,13 +170,12 @@ header ul {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  opacity: 0;
   transition: 0.1s all ease-in-out;
 }
 header ul li a {
   font-size: 22px;
   font-weight: 500;
-  color: var(--disabled-color);
+  color: #000;
   transition: 0.1s all ease-in-out;
 }
 header ul li a:hover, header ul li a:focus {
@@ -412,10 +410,10 @@ a.btn:focus {
   height: 165px;
   padding: 10px 2px;
   margin: 2px 0px;
-  background: #f0f0f0;
+  background: #5d677c;
   color: #eee;
   box-shadow: 2px 2px 6px rgba(51, 56, 68, 0.6);
-  border-radius: 20px;
+  border-radius: 0px;
   border: 1px solid #5d677c;
   display: flex;
   justify-content: center;
@@ -438,44 +436,44 @@ a.btn:focus {
 .items .item:hover, .items .item:focus,
 .items .cancel:hover,
 .items .cancel:focus {
-  background: white;
-  color: white;
+  background: #eee;
+  color: #5d677c;
 }
 .items .cancel {
   background: #eee;
   color: #666;
 }
 .items .cancel:hover, .items .cancel:focus {
-  background: yellow;
+  background: #5d677c;
   color: #eee;
 }
 
 table.casher-table {
-  border: 1px solid #5D677C;
-  background-color: #EEEEEE;
+  border: 1px solid #5d677c;
+  background-color: #eeeeee;
   width: 100%;
   text-align: left;
   border-collapse: collapse;
 }
 table.casher-table td,
 table.casher-table th {
-  border: 1px solid #AAAAAA;
+  border: 1px solid #aaaaaa;
   padding: 6px 4px;
 }
 table.casher-table tbody td {
   font-size: 16px;
 }
 table.casher-table tr:nth-child(even) {
-  background: #AFB6E1;
+  background: #afb6e1;
 }
 table.casher-table thead {
-  background: #5D677C;
+  background: #5d677c;
   border-bottom: 2px solid #444444;
 }
 table.casher-table thead th {
   font-size: 18px;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .items,
@@ -636,14 +634,14 @@ table.casher-table thead th {
     padding: 0;
   }
   .offers-container .offer p {
-    font-size: 14px;
+    font-size: 12px;
   }
   .services-container {
     padding: 8px 0;
   }
   .services-container .service {
-    width: 120px;
-    height: 130px;
+    width: 130px;
+    height: 140px;
   }
   .services-container .service i {
     font-size: 36px;

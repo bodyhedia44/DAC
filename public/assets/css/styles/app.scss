@@ -98,8 +98,8 @@ footer {
         align-items: flex-start;
         flex-wrap: wrap;
 
-        >div,
-        >div>div {
+        > div,
+        > div > div {
             display: flex;
             justify-content: flex-start;
             flex-direction: column;
@@ -160,10 +160,10 @@ header {
 
     .hamburger-button {
         display: none;
-        background: var(--primary-color);
+        // background: var(--primary-color);
         min-width: 80px;
         width: fit-content;
-        color: #fff;
+        color: var(--primary-color);
         padding: 10px 16px;
         border-radius: 6px;
         font-size: 28px;
@@ -187,14 +187,14 @@ header {
         width: fit-content;
         @include centerAll();
         gap: 20px;
-        opacity: 0;
-        transition: .1s all ease-in-out;
+        // opacity: 0;
+        transition: 0.1s all ease-in-out;
 
         li {
             a {
                 font-size: 22px;
                 font-weight: 500;
-                color: var(--disabled-color);
+                color: #000;
                 transition: 0.1s all ease-in-out;
 
                 &:hover,
@@ -453,7 +453,7 @@ a.btn {
         @include centerAll();
         flex-direction: column;
         gap: 6px;
-        transition: .1s all ease-in-out;
+        transition: 0.1s all ease-in-out;
 
         img {
             width: 90%;
@@ -485,18 +485,16 @@ a.btn {
     }
 }
 
-
 table.casher-table {
-
-    border: 1px solid #5D677C;
-    background-color: #EEEEEE;
+    border: 1px solid #5d677c;
+    background-color: #eeeeee;
     width: 100%;
     text-align: left;
     border-collapse: collapse;
 
     td,
     th {
-        border: 1px solid #AAAAAA;
+        border: 1px solid #aaaaaa;
         padding: 6px 4px;
     }
 
@@ -505,20 +503,19 @@ table.casher-table {
     }
 
     tr:nth-child(even) {
-        background: #AFB6E1;
+        background: #afb6e1;
     }
 
     thead {
-        background: #5D677C;
+        background: #5d677c;
         border-bottom: 2px solid #444444;
 
         th {
             font-size: 18px;
             font-weight: bold;
-            color: #FFFFFF;
+            color: #ffffff;
         }
     }
-
 }
 
 .items,
@@ -527,7 +524,6 @@ table.casher-table {
     height: 370px;
 }
 
-
 .price-container,
 .products-container {
     form {
@@ -535,7 +531,7 @@ table.casher-table {
         flex-direction: column;
         gap: 14px;
 
-        >.col-12 {
+        > .col-12 {
             display: flex;
             align-items: baseline;
             // gap: 12px;
@@ -610,7 +606,8 @@ table.casher-table {
 
 @media (max-width: 1024px) {
     section {
-        &.banner {}
+        &.banner {
+        }
     }
 }
 
@@ -701,15 +698,15 @@ table.casher-table {
             justify-content: space-between;
             gap: 30px 0;
 
-            >div,
-            >div>div {
+            > div,
+            > div > div {
                 align-items: center;
             }
         }
     }
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
     section {
         &.banner {
             .layer {
@@ -748,13 +745,13 @@ table.casher-table {
     }
 }
 
-@media (max-width:400px) {
+@media (max-width: 400px) {
     .offers-container {
         padding: 0;
 
         .offer {
             p {
-                font-size: 14px;
+                font-size: 12px;
             }
         }
     }
@@ -763,8 +760,8 @@ table.casher-table {
         padding: 8px 0;
 
         .service {
-            width: 120px;
-            height: 130px;
+            width: 130px;
+            height: 140px;
 
             i {
                 font-size: 36px;

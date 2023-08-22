@@ -36,7 +36,7 @@
                                 <a href="#0">المدونة</a>
                             </li> -->
                             <li>
-                                <a href="#0">مساعدة</a>
+{{--                                <a href="#0">مساعدة</a>--}}
                             </li>
                         </ul>
                         <button class="hamburger-button">
@@ -209,47 +209,104 @@
                 </section>
 
                 <section class="free">
-                    <div class="section-title">
-                        <h2>
-                            منتجات
-                            <span>احترافية</span>
-                           تقدم افضل النتائج
-                        </h2>
-                    </div>
+{{--                    <div class="section-title">--}}
+{{--                        <h2>--}}
+{{--                            منتجات--}}
+{{--                            <span>احترافية</span>--}}
+{{--                           تقدم افضل النتائج--}}
+{{--                        </h2>--}}
+{{--                    </div>--}}
 
-                    <div class="services-container">
-                        <div class="service">
-                            <div class="service-icon">
+{{--                    <div class="services-container">--}}
+{{--                        <div class="service">--}}
+{{--                            <div class="service-icon">--}}
 {{--                                <i class="fa-regular fa-pen-to-square"></i>--}}
-                                <i class="fa-sharp fa-solid fa-store"></i>
+{{--                                <i class="fa-sharp fa-solid fa-store"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="service-title">--}}
+{{--                                <h2>برنامج نقاط البيع POS</h2>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="service">--}}
+{{--                            <div class="service-icon">--}}
+{{--                                <i class="fa-solid fa-road-bridge"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="service-title">--}}
+{{--                                <h2>حلول البنية التحتية .</h2>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="service">--}}
+{{--                            <div class="service-icon">--}}
+{{--                                <i class="fa-solid fa-robot"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="service-title">--}}
+{{--                                <h2>الذكاء الاصطناعي و انترنت الاشياء .--}}
+{{--                                </h2>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="service">--}}
+{{--                            <div class="service-icon">--}}
+{{--                                <i class="fa-solid fa-network-wired"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="service-title">--}}
+{{--                                <h2>برنامج كنترول</h2>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+{{--                    </div>--}}
+
+
+                    <div class="offers-container row">
+                        <div class="offer col-xl-3 col-sm-6">
+                            <div class="offer-icon">
+                                <i class="fa-solid fa-cloud"></i>
                             </div>
-                            <div class="service-title">
-                                <h2>برنامج نقاط البيع POS</h2>
+                            <div class="offer-title">
+                                <h2>كاشير سحابي</h2>
+                            </div>
+                            <div class="offer-description">
+                                <p>
+                                    كل ما تقوم به مخزن في سيرفراتنا السحابية.
+                                </p>
                             </div>
                         </div>
-                        <div class="service">
-                            <div class="service-icon">
-                                <i class="fa-solid fa-road-bridge"></i>
+                        <div class="offer col-xl-3 col-sm-6">
+                            <div class="offer-icon">
+                                <i class="fa-solid fa-desktop"></i>
                             </div>
-                            <div class="service-title">
-                                <h2>حلول البنية التحتية .</h2>
+                            <div class="offer-title">
+                                <h2>يعمل على الiPad</h2>
                             </div>
-                        </div>
-                        <div class="service">
-                            <div class="service-icon">
-                                <i class="fa-solid fa-robot"></i>
-                            </div>
-                            <div class="service-title">
-                                <h2>الذكاء الاصطناعي و انترنت الاشياء .
-                                </h2>
+                            <div class="offer-description">
+                                <p>
+                                    متوافق مع جميع الاجهزة و منها الايباد
+                                </p>
                             </div>
                         </div>
-                        <div class="service">
-                            <div class="service-icon">
-                                <i class="fa-solid fa-network-wired"></i>
+                        <div class="offer col-xl-3 col-sm-6">
+                            <div class="offer-icon">
+                                <i class="fa-solid fa-file-invoice"></i>
                             </div>
-                            <div class="service-title">
-                                <h2>برنامج كنترول</h2>
+                            <div class="offer-title">
+                                <h2>يدعم الفوترة الالكترونية</h2>
+                            </div>
+                            <div class="offer-description">
+                                <p>
+                                    يدعم الفوترة الالكترونية ومعتمد من هيئة الزكاة.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="offer col-xl-3 col-sm-6">
+                            <div class="offer-icon">
+                                <i class="fa-solid fa-mobile-alt"></i>
+                            </div>
+                            <div class="offer-title">
+                                <h2>تقارير و احصائيات</h2>
+                            </div>
+                            <div class="offer-description">
+                                <p>
+                                    تقارير و احصائيات عن مبيعاتك و مبيعات المنتجات.
+                                </p>
                             </div>
                         </div>
 
@@ -265,9 +322,9 @@
                 <div class="col-md-3 col-12">
                     <img class="logo" src="{{ URL::asset('assets/logo.png') }}" alt="Logo">
                     <div class="">
-                        <a href="#0">سياسة استرداد الأموال</a>
+{{--                        <a href="#0">سياسة استرداد الأموال</a>--}}
 
-                        <a href="#0">الشروط والأحكام</a>
+{{--                        <a href="#0">الشروط والأحكام</a>--}}
 
                         <a href="#0">سياسة الخصوصية</a>
                     </div>
