@@ -47,13 +47,13 @@ class SettingController extends Controller
         }
         $data=Setting::first();
 
-           $data->name=$request->name;
-           $data->location=  $request->location;
-        $data->tax_number=  $request->tax_num;
-        $data->tax=  $request->tax;
-           $data->img= $path;
+            $data->name=$request->name;
+            $data->location=  $request->location;
+            $data->tax_number=  $request->tax_num;
+            $data->tax=  $request->tax;
+            $data->img= $path;
 
-           $data->save();
+            $data->save();
 
 
         session()->flash("add","تم التعديل بنجاح");

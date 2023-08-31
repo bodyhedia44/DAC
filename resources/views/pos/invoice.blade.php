@@ -99,7 +99,11 @@
 <div id="prinatble">
     <div id="invoice-POS">
 
+
         <center id="top">
+            <h4>
+                فاتورة ضريبية مبسطة
+            </h4>
             <div class="logo">
                 @if($s->img == null)
                     <img src="http://michaeltruong.ca/images/logo1.png" height="60" width="60">
