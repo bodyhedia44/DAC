@@ -137,7 +137,7 @@
                     {!!  $invoice->invoice !!}
 
                     <tr class="tabletitle">
-                        <td class="payment"><h2>{{$invoice->money-$invoice->tax}}</h2></td>
+                        <td class="payment"><h2>{{$invoice->money-$invoice->tax}} SAR</h2></td>
                         <td class="Rate"><h2>السعر</h2></td>
                         <td></td>
 
@@ -146,13 +146,13 @@
 
                     <tr class="tabletitle">
 
-                        <td class="payment"><h2>{{$invoice->tax}}</h2></td> <td class="Rate"><h2>الضريبة</h2></td>
+                        <td class="payment"><h2>SAR {{$invoice->tax}}</h2></td> <td class="Rate"><h2>الضريبة</h2></td>
                         <td></td>
 
                     </tr>
                     <tr class="tabletitle">
 
-                        <td class="payment"><h2>{{$invoice->money}}</h2></td> <td class="Rate"><h2>الاجمالي</h2></td>
+                        <td class="payment"><h2>SAR {{$invoice->money}}</h2></td> <td class="Rate"><h2>الاجمالي</h2></td>
                         <td></td>
 
                     </tr>
