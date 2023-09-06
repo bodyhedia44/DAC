@@ -67,8 +67,7 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="559.25">
-                                            {{\App\Models\Invoice::sum('money')}}
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{\App\Models\Invoice::sum('money')}}">
                                         </span>
                                     </h4>
                                     <a href="/SalesReport" class="text-decoration-underline">التفاصيل</a>
@@ -101,8 +100,8 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="36894">
-                                            {{\App\Models\Sale::sum('sales')}}
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{\App\Models\Sale::sum('sales')}}">
+
                                         </span></h4>
                                     <a href="/productsReport" class="text-decoration-underline">التفاصيل</a>
                                 </div>
@@ -134,8 +133,7 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="183.35">
-                                            {{\App\Models\Loyalty::count()}}
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{\App\Models\Loyalty::count()}}">
                                         </span>
                                     </h4>
                                     <a href="/loyalty" class="text-decoration-underline">التفاصيل</a>
@@ -167,8 +165,7 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="165.89">
-                                            {{\App\Models\Product::count()}}
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{\App\Models\Product::count()}}">
                                         </span>
                                     </h4>
                                     <a href="/product" class="text-decoration-underline">التفاصيل</a>
