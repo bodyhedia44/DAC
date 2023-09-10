@@ -32,8 +32,8 @@
                                     <thead>
                                         <tr>
                                             <th>العنصر</th>
-                                            <th>الكمية</th>
                                             <th>المجموع</th>
+                                            <th>الكمية</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -46,7 +46,7 @@
                             <div class="col-8 products-container">
                                 <div class="items">
                                     @foreach( $cats as $x)
-                                    <a class="item {{$x->id}} cat" onclick="show({{$x->id}})" >
+                                    <a class="item {{$x->id}} cat" onclick="show({{$x->id}})">
 {{--                                        <img src="{{ URL::asset('assets/images/sandwich.png') }}" alt="" class="item-img">--}}
                                         <h2 class="item-title">
                                             {{$x->name}}
@@ -328,14 +328,14 @@
             const invoice_p =document.getElementById("total_print")
             const invoice_tax_print =document.getElementById("total_tax")
 
-            t.value = total;
-            n.value = total+(tax.value * total / 100) - (sale.value * total / 100)
+            t.value = total.toFixed(2);
+            n.value = (total+(tax.value * total / 100) - (sale.value * total / 100)).toFixed(2)
             invoice_p.value = n.value;
-            invoice_tax_print.value=total+(tax.value * total / 100)-total
-            invoice_tt.value=total+(tax.value * total / 100)-total;
+            invoice_tax_print.value=(total+(tax.value * total / 100)-total).toFixed(2)
+            invoice_tt.value=(total+(tax.value * total / 100)-total).toFixed(2);
 
-            invoice_t.innerHTML = total ;
-            invoice_tax.innerHTML = total+(tax.value * total / 100)-total ;
+            invoice_t.innerHTML = total.toFixed(2) ;
+            invoice_tax.innerHTML = (total+(tax.value * total / 100)-total).toFixed(2) ;
             invoice_sum.innerHTML =  n.value ;
 
             const form_print =document.getElementById("print_form");

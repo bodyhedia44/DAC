@@ -176,7 +176,7 @@
 <script src="{{asset("assets/js/qr.js")}}"></script>
 <script type="text/javascript">
 
-    const sellerName = 'hedia';
+    const sellerName = '{{$s->name}}';
     const registerName = '{{$s->tax_number}}';
     const time = '{{$invoice->created_at}}';
     const total = '{{$invoice->money}}';
