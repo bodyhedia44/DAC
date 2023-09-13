@@ -24,6 +24,10 @@
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">
+                    <label class="form-label">رقم الفاتورة</label>
+                    <input type="text" class="form-control" placeholder="ادخل رقم الفاتورة" id="number" name="number">
+                </div>
+                <div class="mb-3">
                     <label for="name" class="form-label">قيمة المرتجع</label>
                     <input type="number" class="form-control" placeholder="ادخل قيمة المرتجع" id="name" name="money">
                 </div>

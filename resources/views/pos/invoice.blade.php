@@ -119,6 +119,7 @@
         <div id="mid">
             <div class="info">
                 <p>
+                    رقم الفاتورة : {{$invoice->id}}</br>
                     العنوان : {{$s->location}}</br>
                     الرقم الضريبي : {{$s->tax_number}}</br>
                     الموظف : {{$invoice->user->name}}</br>

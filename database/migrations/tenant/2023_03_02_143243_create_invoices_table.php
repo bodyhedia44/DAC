@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('invoices', function (Blueprint $table) {
+            $table->id();
             $table->uuid()->unique();
             $table->double("money");
             $table->double("tax");
