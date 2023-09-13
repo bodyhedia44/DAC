@@ -391,6 +391,7 @@ a.btn:focus {
   border: 1px solid #45518d;
   padding: 0px 6px;
   gap: 8px;
+
 }
 .casher-container button:hover, .casher-container button:focus {
   background: #fff;
@@ -410,10 +411,10 @@ a.btn:focus {
   height: 165px;
   padding: 10px 2px;
   margin: 2px 0px;
-  background: #5d677c;
+  background: #f0f0f0;
   color: #eee;
   box-shadow: 2px 2px 6px rgba(51, 56, 68, 0.6);
-  border-radius: 0px;
+  border-radius: 20px;
   border: 1px solid #5d677c;
   display: flex;
   justify-content: center;
@@ -436,7 +437,7 @@ a.btn:focus {
 .items .item:hover, .items .item:focus,
 .items .cancel:hover,
 .items .cancel:focus {
-  background: #eee;
+  background: #FFFFFF;
   color: #5d677c;
 }
 .items .cancel {
@@ -444,7 +445,7 @@ a.btn:focus {
   color: #666;
 }
 .items .cancel:hover, .items .cancel:focus {
-  background: #5d677c;
+  background: #ffff00;
   color: #eee;
 }
 
