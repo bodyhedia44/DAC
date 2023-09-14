@@ -99,7 +99,7 @@ class CategoryController extends Controller
 
     public function destroy(Request $request)
     {
-        Category::find($request->id)->delete();
+        Category::find($request->id)->forceDelete();
         session()->flash("del","تم حذف القسم بنجاح");
         return redirect("/category");
 

@@ -83,10 +83,10 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">الغاء</button>
                         <button type="submit" class="btn btn-primary ">تعديل</button>
-                    </div>
+                    </div></form>
             </div>
             <!-- /.modal-content -->
-        </div><!-- /.modal-dialog --> </form>
+        </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <!-- Default Modals -->
@@ -114,10 +114,10 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">الغاء</button>
                     <button type="submit" class="btn btn-primary ">حذف</button>
-                </div>
+                </div> </form>
             </div>
             <!-- /.modal-content -->
-        </div><!-- /.modal-dialog --> </form>
+        </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 @endsection
 @section('script')
