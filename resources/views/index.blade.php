@@ -235,7 +235,7 @@
         var options = {
             series: [
                 {{\App\Models\Invoice::where("created_at",">", Carbon\Carbon::today())->where("invoice_type","عملية شراء")->sum("money")}},
-                -1*{{\App\Models\Invoice::where("created_at",">", Carbon\Carbon::today())->where("invoice_type","مرتجع")->sum("money")}},
+                -1*{{\App\Models\Invoice::where("created_at",">", Carbon\Carbon::today())->where("invoice_type","دائن")->sum("money")}},
             ],
             chart: {
                 width: 380,

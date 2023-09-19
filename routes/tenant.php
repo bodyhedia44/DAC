@@ -55,6 +55,7 @@ Route::middleware([
 
     Route::get('productsReport', [\App\Http\Controllers\ReportsController::class,'productsReport']);
     Route::get('SalesReport', [\App\Http\Controllers\ReportsController::class,'salesReport']);
+    Route::get('sync_role', [\App\Http\Controllers\POSController::class,'perm']);
     Route::post('productsReport', [\App\Http\Controllers\ReportsController::class,'updateProducts']);
 
     Route::resource("category", \App\Http\Controllers\CategoryController::class,);

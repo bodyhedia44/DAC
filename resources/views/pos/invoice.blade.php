@@ -102,7 +102,12 @@
 
         <center id="top">
             <h4>
-                فاتورة ضريبية مبسطة
+                @if($invoice->invoice_type =="عملية شراء")
+                    فاتورة ضريبية مبسطة
+                @else
+                    اشعار {{$invoice->invoice_type}}
+                @endif
+
             </h4>
             <div class="logo">
                 @if($s->img == null)
@@ -119,7 +124,12 @@
         <div id="mid">
             <div class="info">
                 <p>
-                    رقم الفاتورة : {{$invoice->id}}</br>
+                    @if($invoice->invoice_type =="عملية شراء")
+                        رقم الفاتورة : {{$invoice->id}}</br>
+                    @else
+                        رقم الاشعار : {{$invoice->id}}</br>
+                        رقم الفاتورة : {{$invoice->payment_type}}</br>
+                    @endif
                     العنوان : {{$s->location}}</br>
                     الرقم الضريبي : {{$s->tax_number}}</br>
                     الموظف : {{$invoice->user->name}}</br>
@@ -138,7 +148,12 @@
                     {!!  $invoice->invoice !!}
 
                     <tr class="tabletitle">
-                        <td class="payment"><h2>{{$invoice->money-$invoice->tax}} SAR</h2></td>
+                        @if($invoice->invoice_type =="دائن")
+                            <td class="payment"><h2>{{($invoice->money)*-1-$invoice->tax}} SAR</h2></td>
+                        @else
+                            <td class="payment"><h2>{{$invoice->money-$invoice->tax}} SAR</h2></td>
+                        @endif
+
                         <td class="Rate"><h2>السعر</h2></td>
                         <td></td>
 
@@ -152,8 +167,11 @@
 
                     </tr>
                     <tr class="tabletitle">
-
-                        <td class="payment"><h2>SAR {{$invoice->money}}</h2></td> <td class="Rate"><h2>الاجمالي</h2></td>
+                        @if($invoice->invoice_type =="دائن")
+                            <td class="payment"><h2>SAR {{$invoice->money *-1}}</h2></td> <td class="Rate"><h2>الاجمالي</h2></td>
+                        @else
+                            <td class="payment"><h2>SAR {{$invoice->money}}</h2></td> <td class="Rate"><h2>الاجمالي</h2></td>
+                        @endif
                         <td></td>
 
                     </tr>

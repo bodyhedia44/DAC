@@ -64,11 +64,11 @@
                 @endcan
 
 
-                @can('المرتجعات')
+                @can('دائن ومدين')
 
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="/returns" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
-                            <i class="mdi mdi-cash-refund"></i> <span>المرتجعات</span>
+                            <i class="mdi mdi-cash-refund"></i> <span>دائن ومدين</span>
 
                         </a>
                     </li>

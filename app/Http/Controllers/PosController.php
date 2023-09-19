@@ -17,7 +17,7 @@ class PosController extends Controller
     function __construct()
     {
         $this->middleware('permission:صفحة نقاط البيع', ['only' => ['index','invoice','store']]);
-        $this->middleware('permission:المرتجعات', ['only' => ['returns']]);
+        $this->middleware('permission:دائن ومدين', ['only' => ['returns']]);
     }
 
     public function index(){
@@ -27,7 +27,12 @@ class PosController extends Controller
         return view('pos.pos',compact('cats','prods','s'));
     }
 
-
+public function perm(){
+//    $permission = Spatie\Permission\Models\Permission::findByName('المرتجعات');
+//    $permission->name = 'دائن ومدين';
+//    $permission->save();
+//    $permission->syncRoles($roles);
+}
 
     public function invoice(Request $request){
 
@@ -90,17 +95,34 @@ class PosController extends Controller
 
             return redirect("/pos");
         }else{
-            Invoice::create([
-                "money"=>$request->money*-1,
-                "payment_type"=>"---",
-                "invoice_type"=>"مرتجع",
+            $s=Setting::first();
+
+            $i=Invoice::create([
+                "money"=> $request->type == "دائن"? $request->money*-1 : $request->money ,
+                "payment_type"=>$request->number,
+                "invoice_type"=>$request->type,
                 "user_id"=>Auth::user()->id,
-                'invoice'=>"-------",
-                'tax'=>0
+                'invoice'=>"
+                        <tr class='tabletitle'>
+                                            <td class='item'><h2>العنصر</h2></td>
+                                            <td class='Hours'><h2>الكمية</h2></td>
+                                            <td class='Rate'><h2>المجموع</h2></td>
+                                        </tr>
+                                         <tr>
+                        <td><p class='itemtext'>$request->name</p></td>
+                        <td class='tableitem'><p class='itemtext'>$request->quan</p></td>
+                        <td class='tableitem'><p class='itemtext'>$request->money</p></td>
+                    </tr>
+                ",
+                'tax'=>$s->tax*$request->money/100
             ]);
 
-            session()->flash("add","تم اضافة المرتجع بنجاح");
-            return redirect('/returns');
+//            session()->flash("add","تم اضافة المرتجع بنجاح");
+//            redirect('/returns');
+
+            return Redirect::away("/showInvoice/".$i->uuid);
+
         }
+
     }
 }
