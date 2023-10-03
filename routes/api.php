@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::post("/login",[\App\Http\Controllers\ApiAuthController::class,'login']);
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/items',[\App\Http\Controllers\POSAppController::class,'get_items']);
-    Route::post('/save_invoice',[\App\Http\Controllers\POSAppController::class,'save_invoice']);
-    Route::get('/test',[\App\Http\Controllers\POSAppController::class,'test_func']);
-});
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//
+//Route::post("/login",[\App\Http\Controllers\ApiAuthController::class,'login']);
+//Route::middleware(['auth:sanctum'])->group(function () {
+//    Route::get('/items',[\App\Http\Controllers\POSAppController::class,'get_items']);
+//    Route::post('/save_invoice',[\App\Http\Controllers\POSAppController::class,'save_invoice']);
+//    Route::get('/test',[\App\Http\Controllers\POSAppController::class,'test_func']);
+//});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});

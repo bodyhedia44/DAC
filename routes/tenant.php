@@ -21,6 +21,27 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 |
 */
 
+
+Route::middleware([
+    'api',
+    InitializeTenancyByDomain::class,
+    PreventAccessFromCentralDomains::class,
+])->prefix('api')->group(function () {
+    Route::post("login",[\App\Http\Controllers\ApiAuthController::class,'login']);
+});
+
+Route::middleware([
+    'api',
+    'auth:sanctum',
+    InitializeTenancyByDomain::class,
+    PreventAccessFromCentralDomains::class,
+])->prefix('api')->group(function () {
+    Route::get('items',[\App\Http\Controllers\POSAppController::class,'get_items']);
+    Route::post('save_invoice',[\App\Http\Controllers\POSAppController::class,'save_invoice']);
+    Route::get('test',[\App\Http\Controllers\POSAppController::class,'test_func']);
+});
+
+
 Route::middleware([
     'web',
     'auth',
@@ -89,9 +110,11 @@ Route::middleware([
 //        return view('home');
 //    } );
 
+
     //Update User Details
     Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
     Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
     Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 });
+
